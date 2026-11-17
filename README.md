@@ -1,8 +1,8 @@
-# Wardogs / FGTRACK 源码与分离资料归档
+# WarDogs ESP（透视辅助）源码与分离资料归档
 
 [English introduction](README.en.md) · [下载全部归档 / Downloads](https://github.com/simplerjiang/wardogs-research/releases/tag/archive-20261117)
 
-本仓库整理 Wardogs 相关本地工程、FGTRACK 分离组件与分析资料，以及 Kong助手界面改版源码。归档日期为 **2026-11-17，Asia/Singapore**。
+本仓库是**《WarDogs》的 ESP（透视辅助）项目归档**，收录 CoreWD/Wardogs ESP 源码、FGTRACK 分离组件与分析资料，以及 Kong助手界面改版源码。ESP 代码包含读取游戏目标数据，并在游戏画面上叠加人物方框、骨骼、名称、血量等信息的实现。归档日期为 **2026-11-17，Asia/Singapore**。
 
 源码可直接浏览和克隆；体积较大的软件样本、证书、汇编、静态分析记录和历史取证资料放在 Releases。这里的“源码”包括本地自写工程与提取的网页模板，**不代表已经取得 FGTRACK 等第三方闭源程序的完整原始源码**。
 
@@ -10,7 +10,7 @@
 
 | 路径 | 内容与来源 |
 | --- | --- |
-| [source/wardogsE](source/wardogsE) | CoreWD 原工程当前快照：覆盖层、内核驱动、历史 mapper、受控读取与绘制测试及原有文档。来源提交 `7c73400a4873c0c86f54fa78e5eeba238c52e193`。 |
+| [source/wardogsE](source/wardogsE) | CoreWD / WarDogs ESP 原工程当前快照：ESP 覆盖层、内核驱动、历史 mapper、受控读取与绘制测试及原有文档。来源提交 `7c73400a4873c0c86f54fa78e5eeba238c52e193`。 |
 | [source/wardogsE-reference](source/wardogsE-reference) | 保留的 reference-reconstruction 独立实验分支，包含 `reconstruction/`。来源提交 `09114169ce5ba61f18c28091da54c0b64b102a32`；不表示已合入主工程。 |
 | [source/wardogsv3](source/wardogsv3) | WardogLauncher C++ 复现工程、测试驱动、自测工具、案例配置和覆盖层代码。包含归档时本地尚未提交的修改，并非仅复制旧远端提交。 |
 | [source/kong-ui](source/kong-ui) | Kong助手启动页与菜单 HTML/CSS、提取的原模板、界面构建脚本、设计素材和已有 UI 验证记录。来自 `codex/kong-ui-20261113` 的当前文件。 |
@@ -47,4 +47,4 @@
 
 第三方程序、驱动、证书、SDK、图标与素材的权利归其原权利人；本仓库没有给这些内容追加统一的 MIT 或其他开源许可。已有许可文件随相应素材保留。公开可访问不等于所有第三方内容均可自由再许可。
 
-This repository archives local source projects, extracted FGTRACK components, research evidence, and the Kong Assistant UI revision. Source snapshots are browsable here; large archives are available in [Releases](https://github.com/simplerjiang/wardogs-research/releases/tag/archive-20261117). See the [full English introduction](README.en.md) for scope, provenance, and verification limits.
+This repository archives **WarDogs ESP** source code, extracted FGTRACK components, research evidence, and the Kong Assistant UI revision. The ESP code implements player boxes, skeletons, names, and health overlays for WarDogs. Source snapshots are browsable here; large archives are available in [Releases](https://github.com/simplerjiang/wardogs-research/releases/tag/archive-20261117). See the [full English introduction](README.en.md) for scope, provenance, and verification limits.
