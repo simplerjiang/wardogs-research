@@ -1,8 +1,8 @@
-# Wardogs / FGTRACK Source and Extracted Materials Archive
+# WarDogs ESP — Source and Extracted Materials Archive
 
 [中文介绍](README.md) · [Download all archives](https://github.com/simplerjiang/wardogs-research/releases/tag/archive-20261117)
 
-This repository collects local Wardogs projects, extracted FGTRACK components and research records, and the Kong Assistant UI revision. The snapshot date is **November 17, 2026, Asia/Singapore**.
+This repository archives **ESP (Extra Sensory Perception) software for WarDogs**, including CoreWD/Wardogs ESP source code, extracted FGTRACK components and research records, and the Kong Assistant UI revision. The ESP implementation reads game target data and draws information such as player boxes, skeletons, names, and health over the game view. The snapshot date is **November 17, 2026, Asia/Singapore**.
 
 Source snapshots are available directly in Git. Larger executable samples, public certificates, assembly listings, static-analysis exports, and historical evidence are provided as Release assets. “Source” refers to the local implementation projects and extracted web templates; **this archive does not claim to contain the complete original source code of closed-source third-party software such as FGTRACK**.
 
@@ -10,7 +10,7 @@ Source snapshots are available directly in Git. Larger executable samples, publi
 
 | Path | Contents and provenance |
 | --- | --- |
-| [source/wardogsE](source/wardogsE) | Current CoreWD project snapshot: overlay, kernel driver, historical mapper, controlled memory/render tests, and existing documentation. Source commit: `7c73400a4873c0c86f54fa78e5eeba238c52e193`. |
+| [source/wardogsE](source/wardogsE) | Current CoreWD / WarDogs ESP project snapshot: ESP overlay, kernel driver, historical mapper, controlled memory/render tests, and existing documentation. Source commit: `7c73400a4873c0c86f54fa78e5eeba238c52e193`. |
 | [source/wardogsE-reference](source/wardogsE-reference) | Retained reference-reconstruction experiment, including `reconstruction/`. Source commit: `09114169ce5ba61f18c28091da54c0b64b102a32`. Its presence does not imply integration into the main project. |
 | [source/wardogsv3](source/wardogsv3) | WardogLauncher C++ reconstruction, test driver, self-test tools, case configuration, and overlay code. This captures the local files, including changes not yet committed upstream. |
 | [source/kong-ui](source/kong-ui) | Launcher/menu HTML and CSS, extracted original templates, UI build scripts, design assets, and existing UI verification records from the `codex/kong-ui-20261113` working copy. |
