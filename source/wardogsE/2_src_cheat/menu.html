@@ -1,0 +1,840 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BLAQUE</title>
+<style>
+:root{
+  --acc:139,92,246; --acc-l:196,181,253;
+  --bg0:10,8,16; --bg1:16,12,24; --bg2:22,17,33; --bg3:29,23,44;
+  --line:48,38,72; --line-s:64,52,96;
+  --tx0:235,231,245; --tx1:178,168,205; --tx2:120,108,152;
+  --ok:74,222,128; --bad:248,113,113; --warn:251,191,36;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:transparent;
+  font-family:'Segoe UI Variable','Segoe UI',system-ui,sans-serif;color:rgb(var(--tx0));font-size:13px}
+#app{position:absolute;inset:0;display:flex;flex-direction:column;
+  background:rgba(var(--bg0),.97);border:1px solid rgba(var(--line-s),.8);border-radius:12px;
+  box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 0 1px rgba(var(--acc),.12),0 0 60px rgba(var(--acc),.06)}
+
+/* ============================ ШАПКА ============================ */
+#head{display:flex;align-items:center;height:46px;padding:0 16px;gap:12px;
+  border-bottom:1px solid rgba(var(--line),.6);cursor:default}
+#head .logo{display:flex;align-items:baseline;gap:8px}
+#head .logo b{font-size:15px;font-weight:700;letter-spacing:2.5px;
+  background:linear-gradient(90deg,rgb(var(--acc-l)),rgb(var(--acc)));-webkit-background-clip:text;background-clip:text;color:transparent}
+#head .logo span{font-size:11px;color:rgb(var(--tx2))}
+#head .grow{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;
+  font-size:11px;background:rgba(var(--bg3),.9);border:1px solid rgba(var(--line),.8);color:rgb(var(--tx1))}
+.dot{width:6px;height:6px;border-radius:50%;background:rgb(var(--bad));box-shadow:0 0 8px rgba(var(--bad),.8)}
+.dot.on{background:rgb(var(--ok));box-shadow:0 0 8px rgba(var(--ok),.8)}
+#langBtn{cursor:pointer;transition:all .15s}
+#langBtn:hover{border-color:rgba(var(--acc),.6);color:rgb(var(--tx0))}
+#closeBtn{cursor:pointer;transition:all .15s;color:rgb(var(--tx2))}
+#closeBtn:hover{border-color:rgba(248,113,113,.7);color:rgb(var(--bad));box-shadow:0 0 10px rgba(248,113,113,.3)}
+
+/* ============================ КАРКАС ============================ */
+#body{flex:1;display:flex;min-height:0}
+#rail{width:170px;padding:14px 10px;display:flex;flex-direction:column;gap:4px;
+  border-right:1px solid rgba(var(--line),.6);background:rgba(var(--bg1),.6);border-radius:0 0 0 11px}
+.tab{display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border-radius:9px;
+  color:rgb(var(--tx2));cursor:pointer;position:relative;transition:all .18s ease;font-size:12.5px;font-weight:500}
+.tab svg{width:17px;height:17px;flex:none;opacity:.75;transition:all .18s ease}
+.tab:hover{color:rgb(var(--tx1));background:rgba(var(--bg3),.5)}
+.tab.act{color:rgb(var(--tx0));background:linear-gradient(90deg,rgba(var(--acc),.22),rgba(var(--acc),.06))}
+.tab.act svg{opacity:1;filter:drop-shadow(0 0 6px rgba(var(--acc),.8))}
+.tab.act::before{content:'';position:absolute;left:-10px;top:8px;bottom:8px;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,rgb(var(--acc-l)),rgb(var(--acc)));box-shadow:0 0 10px rgba(var(--acc),.7)}
+#main{flex:1;min-width:0;overflow:hidden auto;padding:18px 20px;scrollbar-width:thin;scrollbar-color:rgba(var(--line-s),.6) transparent}
+#main::-webkit-scrollbar{width:8px}
+#main::-webkit-scrollbar-thumb{background:rgba(var(--line-s),.55);border-radius:4px}
+.page{display:none;animation:pgin .22s ease}
+.page.act{display:block}
+@keyframes pgin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ============================ СЕКЦИИ ============================ */
+.sec{margin-bottom:18px}
+.sec>h3{font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;
+  color:rgb(var(--tx2));margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec>h3::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(var(--line),.9),transparent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+
+/* строка-тумблер */
+.row{display:flex;align-items:center;min-height:40px;padding:6px 10px;border-radius:9px;transition:background .15s}
+.row:hover{background:rgba(var(--bg3),.45)}
+.row .lab{flex:1;min-width:0}
+.row .lab .t{font-size:12.5px;color:rgb(var(--tx0));font-weight:500}
+.row .lab .d{font-size:10.5px;color:rgb(var(--tx2));margin-top:1px}
+.sw{flex:none;width:38px;height:21px;border-radius:11px;background:rgba(var(--bg3),.95);
+  border:1px solid rgba(var(--line-s),.9);position:relative;cursor:pointer;transition:all .2s ease}
+.sw::after{content:'';position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;
+  background:rgb(var(--tx2));transition:all .2s cubic-bezier(.34,1.56,.64,1)}
+.sw.on{background:linear-gradient(90deg,rgba(var(--acc),.35),rgba(var(--acc),.65));border-color:rgba(var(--acc),.8);
+  box-shadow:0 0 12px rgba(var(--acc),.35)}
+.sw.on::after{left:19px;background:#fff;box-shadow:0 0 8px rgba(var(--acc),.9)}
+.row.off .lab{opacity:.45}
+
+/* слайдер */
+.srow{padding:6px 10px;border-radius:9px}
+.srow:hover{background:rgba(var(--bg3),.45)}
+.srow .top{display:flex;justify-content:space-between;margin-bottom:6px}
+.srow .top .t{font-size:12.5px;font-weight:500}
+.srow .top .v{font-size:11.5px;color:rgb(var(--acc-l));font-variant-numeric:tabular-nums;font-weight:600}
+.sl{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;
+  background:linear-gradient(90deg,rgba(var(--acc),.85) var(--p,50%),rgba(var(--bg3),1) var(--p,50%));cursor:pointer}
+.sl::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;
+  border:2px solid rgb(var(--acc));box-shadow:0 0 10px rgba(var(--acc),.7);transition:transform .12s}
+.sl::-webkit-slider-thumb:hover{transform:scale(1.2)}
+
+/* цвета */
+.crow{display:flex;align-items:center;gap:10px;min-height:40px;padding:5px 10px;border-radius:9px}
+.crow:hover{background:rgba(var(--bg3),.45)}
+.crow .swb{flex:none;width:26px;height:26px;border-radius:7px;border:1px solid rgba(255,255,255,.18);
+  cursor:pointer;position:relative;overflow:hidden;transition:transform .12s}
+.crow .swb:hover{transform:scale(1.08)}
+.crow .swb input{position:absolute;inset:-6px;opacity:0;cursor:pointer}
+.crow .cl{flex:1;font-size:12.5px;font-weight:500}
+.crow .cf{display:flex;align-items:center;gap:6px;font-size:10.5px;color:rgb(var(--tx2));cursor:pointer}
+.crow .cf .msw{width:26px;height:15px;border-radius:8px;background:rgba(var(--bg3),.95);
+  border:1px solid rgba(var(--line-s),.8);position:relative;transition:all .18s}
+.crow .cf .msw::after{content:'';position:absolute;top:1.5px;left:2px;width:10px;height:10px;border-radius:50%;background:rgb(var(--tx2));transition:all .18s}
+.crow .cf .msw.on{background:rgba(var(--acc),.5);border-color:rgba(var(--acc),.8)}
+.crow .cf .msw.on::after{left:12px;background:#fff}
+
+/* кнопки */
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{height:34px;padding:0 16px;border-radius:9px;border:1px solid rgba(var(--line-s),.9);
+  background:rgba(var(--bg3),.8);color:rgb(var(--tx1));font-size:12px;font-weight:600;cursor:pointer;
+  transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+.btn:hover{border-color:rgba(var(--acc),.7);color:rgb(var(--tx0));box-shadow:0 0 14px rgba(var(--acc),.25)}
+.btn.pri{background:linear-gradient(135deg,rgba(var(--acc),.85),rgba(var(--acc),.55));border-color:transparent;color:#fff}
+.btn.pri:hover{box-shadow:0 0 20px rgba(var(--acc),.5)}
+.stat{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-radius:8px;font-size:12px}
+.stat:hover{background:rgba(var(--bg3),.45)}
+.stat .k{color:rgb(var(--tx2))}
+.stat .v{color:rgb(var(--tx0));font-weight:600;font-variant-numeric:tabular-nums}
+.stat .v.g{color:rgb(var(--ok))}.stat .v.r{color:rgb(var(--bad))}.stat .v.a{color:rgb(var(--acc-l))}
+
+/* ============================ ESP ПРЕВЬЮ ============================ */
+#prevWrap{display:flex;gap:18px;align-items:flex-start}
+#prevGrid{flex:1;min-width:0}
+#preview{flex:none;width:290px;position:sticky;top:0;
+  background:linear-gradient(160deg,rgba(var(--bg2),.9),rgba(var(--bg1),.95));
+  border:1px solid rgba(var(--line-s),.85);border-radius:12px;padding:14px 12px 10px;
+  box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 0 1px rgba(var(--acc),.08)}
+#preview h4{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;color:rgb(var(--tx2));
+  display:flex;align-items:center;gap:8px;margin-bottom:4px}
+#preview h4::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(var(--line),.9),transparent)}
+#stage{position:relative;width:264px;height:330px;margin:2px auto}
+#stage .model{position:absolute;left:50%;top:12px;transform:translateX(-50%);height:306px;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.5));pointer-events:none}
+#pbox{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:118px;height:306px;
+  border:1.6px solid var(--c-box,rgba(235,231,245,.85));border-radius:2px;pointer-events:none;
+  transition:border-color .25s;opacity:var(--o,1)}
+/* HP и броня — вертикальные, сбоку бокса, во весь рост (как в игре) */
+#php{position:absolute;left:52px;top:12px;width:5px;height:306px;border-radius:2.5px;
+  background:rgba(var(--bg3),1);overflow:hidden;pointer-events:none;opacity:var(--o,1)}
+#phpFill{position:absolute;bottom:0;left:0;right:0;height:var(--hp,85%);
+  border-radius:2.5px;transition:height .5s ease;background:rgb(var(--ok))}
+#parmor{position:absolute;left:42px;top:12px;width:5px;height:306px;border-radius:2.5px;
+  background:rgba(var(--bg3),1);overflow:hidden;pointer-events:none;opacity:var(--o,1)}
+#parmorFill{position:absolute;bottom:0;left:0;right:0;height:var(--ar,45%);
+  border-radius:2.5px;transition:height .5s ease;background:rgb(96,165,250)}
+.plabel{position:absolute;padding:2px 7px;border-radius:6px;font-size:10.5px;font-weight:600;
+  background:rgba(var(--bg0),.78);border:1px solid rgba(var(--line),.55);cursor:grab;white-space:nowrap;
+  transition:border-color .15s, box-shadow .15s;z-index:3}
+.plabel:active{cursor:grabbing}
+.plabel:hover{border-color:rgba(var(--acc),.6);box-shadow:0 0 10px rgba(var(--acc),.25)}
+.plabel.drag{opacity:.4}
+.plabel.over{border-color:rgb(var(--acc));box-shadow:0 0 14px rgba(var(--acc),.5)}
+#pctrl{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.pchip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;
+  font-size:10.5px;font-weight:600;color:rgb(var(--tx2));cursor:pointer;
+  background:rgba(var(--bg3),.75);border:1px solid rgba(var(--line-s),.7);transition:all .15s}
+.pchip:hover{color:rgb(var(--tx1))}
+.pchip .pd{width:13px;height:13px;border-radius:4px;border:1.5px solid rgb(var(--tx2));position:relative;transition:all .15s}
+.pchip.on{color:rgb(var(--tx0));border-color:rgba(var(--acc),.55);background:rgba(var(--acc),.12)}
+.pchip.on .pd{border-color:rgb(var(--acc));background:rgba(var(--acc),.9)}
+#hpSlLab{display:flex;justify-content:space-between;font-size:10.5px;color:rgb(var(--tx2));margin:10px 2px 4px}
+#hpSlLab b{color:rgb(var(--acc-l));font-variant-numeric:tabular-nums}
+
+
+/* ===== свой color-popup: системный диалог (Enter/ESC) вырезан ===== */
+#cpop{position:fixed;z-index:200;display:none;background:rgba(16,12,24,.98);border:1px solid rgba(var(--line-s),.9);border-radius:12px;padding:12px;box-shadow:0 16px 50px rgba(0,0,0,.6),0 0 0 1px rgba(var(--acc),.1)}
+#cpop.open{display:block}
+#cpopGrid{display:grid;grid-template-columns:repeat(12,22px);gap:5px}
+#cpopGrid .cc{width:22px;height:22px;border-radius:5px;cursor:pointer;border:1px solid rgba(255,255,255,.14);transition:transform .1s}
+#cpopGrid .cc:hover{transform:scale(1.22);border-color:#fff;z-index:2}
+#cpopCur{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(var(--line),.6);font-size:10.5px;color:rgb(var(--tx2))}
+#cpopCur .sw{width:22px;height:22px;border-radius:5px;border:1px solid rgba(255,255,255,.2)}
+
+/* тосты */
+#toasts{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:8px;z-index:99}
+.toast{display:flex;align-items:center;gap:9px;padding:9px 14px;border-radius:10px;font-size:12px;font-weight:600;
+  background:rgba(var(--bg2),.97);border:1px solid rgba(var(--acc),.45);color:rgb(var(--tx0));
+  box-shadow:0 8px 30px rgba(0,0,0,.5);animation:tin .25s cubic-bezier(.34,1.56,.64,1)}
+.toast .ti{width:7px;height:7px;border-radius:50%;background:rgb(var(--acc));box-shadow:0 0 8px rgb(var(--acc))}
+@keyframes tin{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.toast.bye{opacity:0;transform:translateX(30px);transition:all .3s}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="head">
+    <div class="logo"><b>BLAQUE</b><span data-i18n="sub">| WarDogs ESP</span></div>
+    <div class="grow"></div>
+    <div class="pill"><span class="dot" id="gdot"></span><span id="gstat" data-i18n="wait">waiting…</span></div>
+    <div class="pill" id="fpsP">0 fps</div>
+    <div class="pill" id="tgtP">0 tgt</div>
+    <div class="pill" id="langBtn" title="Language">ENG</div>
+    <div class="pill" id="closeBtn" title="Close menu (F1)">&#10005;</div>
+  </div>
+
+  <div id="body">
+    <div id="rail"></div>
+    <div id="main">
+
+      <!-- ==================== ESP ==================== -->
+      <div class="page act" id="pg-esp">
+        <div id="prevWrap">
+          <div id="prevGrid">
+            <div class="sec"><h3 data-i18n="s_players">Players</h3>
+              <div class="row" data-k="enabled"><div class="lab"><div class="t" data-i18n="master">Master switch</div><div class="d" data-i18n="master_d">everything on/off</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_box"><div class="lab"><div class="t" data-i18n="boxes">Boxes</div><div class="d" data-i18n="boxes_d">corner box around pawn</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_skeleton"><div class="lab"><div class="t" data-i18n="skel">Skeleton</div><div class="d" data-i18n="skel_d">bones by name</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_name"><div class="lab"><div class="t" data-i18n="names">Names</div><div class="d" data-i18n="names_d">sanitized nickname</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_health"><div class="lab"><div class="t" data-i18n="hpbar">Health bar</div><div class="d" data-i18n="hpbar_d">left side, colour by value</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_armor"><div class="lab"><div class="t" data-i18n="armor">Armor</div><div class="d" data-i18n="armor_d">plate durability</div></div><div class="sw"></div></div>
+            </div>
+            <div class="sec"><h3 data-i18n="s_info">Info</h3>
+              <div class="row" data-k="show_distance"><div class="lab"><div class="t" data-i18n="dist">Distance</div><div class="d" data-i18n="dist_d">metres under marker</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_weapon"><div class="lab"><div class="t" data-i18n="weap">Weapon</div><div class="d" data-i18n="weap_d">held item name</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_head"><div class="lab"><div class="t" data-i18n="head">Head marker</div><div class="d" data-i18n="head_d">dot on head bone</div></div><div class="sw"></div></div>
+              <div class="row" data-k="only_visible"><div class="lab"><div class="t" data-i18n="vis">Only visible</div><div class="d" data-i18n="vis_d">LOS filter</div></div><div class="sw"></div></div>
+              <div class="row" data-k="show_team"><div class="lab"><div class="t" data-i18n="team">Teammates</div><div class="d" data-i18n="team_d">own squad markers</div></div><div class="sw"></div></div>
+            </div>
+            <div class="sec"><h3 data-i18n="s_info2">Range</h3><div class="srow"><div class="top"><span class="t" data-i18n="maxd">Max distance</span><span class="v" id="maxdV">300 m</span></div>
+                <input type="range" class="sl" id="maxd" min="0" max="2000" step="10"></div>
+              <div class="srow"><div class="top"><span class="t" data-i18n="skeld">Skeleton distance</span><span class="v" id="skeldV">150 m</span></div>
+                <input type="range" class="sl" id="skeld" min="0" max="2000" step="10"></div>
+              <div class="srow"><div class="top"><span class="t" data-i18n="linew">Line thickness</span><span class="v" id="linewV">1 px</span></div>
+                <input type="range" class="sl" id="linew" min="1" max="4" step="1"></div>
+            </div>
+          </div>
+
+          <!-- ESP PREVIEW как в референсе -->
+          <div id="preview">
+            <h4 data-i18n="prev">ESP preview</h4>
+            <div id="stage">
+              <img class="model" src="preview_model.png" alt="">
+              <div id="pbox"></div>
+              <div id="php"><div id="phpFill"></div></div>
+              <div id="parmor"><div id="parmorFill"></div></div>
+              <!-- подписи: перетаскиваются (drag-n-drop как в референсе) -->
+              <div class="plabel" id="lb-name"  style="left:50%;top:284px;transform:translateX(-50%)" data-c="6">Chinema</div>
+              <div class="plabel" id="lb-weap"  style="right:0;top:96px"  data-c="7">AK-15</div>
+              <div class="plabel" id="lb-dist"  style="left:0;top:150px"  data-c="8">128 m</div>
+            </div>
+            <div id="pctrl">
+              <span class="pchip" data-p="pbox"><span class="pd"></span><span data-i18n="c_box">Box</span></span>
+              <span class="pchip" data-p="pHp"><span class="pd"></span>HP</span>
+              <span class="pchip" data-p="lb-name"><span class="pd"></span><span data-i18n="c_nick">Nick</span></span>
+              <span class="pchip" data-p="lb-weap"><span class="pd"></span><span data-i18n="c_weap">Weapon</span></span>
+              <span class="pchip" data-p="lb-dist"><span class="pd"></span><span data-i18n="c_dist">Dist</span></span>
+              <span class="pchip" data-p="lb-armor"><span class="pd"></span><span data-i18n="c_armor">Armor</span></span>
+            </div>
+            <div id="hpSlLab"><span data-i18n="demo_hp">demo HP</span><b id="hpV">85%</b></div>
+            <input type="range" class="sl" id="hpSl" min="1" max="100" value="85">
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== VEHICLES ==================== -->
+      <div class="page" id="pg-veh">
+        <div class="sec"><h3 data-i18n="s_veh">Vehicles</h3>
+          <div class="row" data-k="show_vehicles"><div class="lab"><div class="t" data-i18n="vmark">Vehicle markers</div><div class="d" data-i18n="vmark_d">marker on the hull itself</div></div><div class="sw"></div></div>
+          <div class="row" data-k="veh_armed_only"><div class="lab"><div class="t" data-i18n="varmed">Armed only</div><div class="d" data-i18n="varmed_d">turrets and guns</div></div><div class="sw"></div></div>
+          <div class="row" data-k="veh_show_hp"><div class="lab"><div class="t" data-i18n="vhp">Vehicle HP</div><div class="d" data-i18n="vhp_d">hull integrity bar</div></div><div class="sw"></div></div>
+        </div>
+      </div>
+
+      <!-- ==================== AIM ASSIST ==================== -->
+      <div class="page" id="pg-aim">
+        <div class="sec"><h3 data-i18n="s_aim">Aim assist</h3>
+          <div class="row" data-k="aa_on"><div class="lab"><div class="t" data-i18n="aa_on">Assist</div><div class="d" data-i18n="aa_on_d">hold the key — crosshair locks the head</div></div><div class="sw"></div></div>
+          <div class="row" data-k="aa_show_fov"><div class="lab"><div class="t" data-i18n="aa_fov">Draw FOV circle</div><div class="d" data-i18n="aa_fov_d">the circle is also the capture zone</div></div><div class="sw"></div></div>
+          <div class="row" data-k="aa_visible"><div class="lab"><div class="t" data-i18n="aa_vis">Visible only</div><div class="d" data-i18n="aa_vis_d">skip targets the engine does not render</div></div><div class="sw"></div></div>
+          <div class="row" id="aaZoneRow"><div class="lab"><div class="t" data-i18n="aa_zone">Capture zone under zoom</div><div class="d" data-i18n="aa_zone_d">click to cycle the mode</div></div>
+            <button class="btn" id="aaZoneBtn">AUTO</button></div>
+          <div class="row" data-k="aa_team"><div class="lab"><div class="t" data-i18n="aa_team">Assist teammates</div><div class="d" data-i18n="aa_team_d">also lock own squad and faction</div></div><div class="sw"></div></div>
+          <div class="row" data-k="aa_head"><div class="lab"><div class="t" data-i18n="aa_bone">Head bone</div><div class="d" data-i18n="aa_bone_d">on = head, off = neck</div></div><div class="sw"></div></div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_aimctl">Control</h3>
+          <div class="srow"><div class="top"><span class="t" data-i18n="aa_fovpx">FOV radius</span><span class="v" id="aafovV">150 px</span></div>
+            <input type="range" class="sl" id="aafov" min="30" max="600" step="5"></div>
+          <div class="srow"><div class="top"><span class="t" data-i18n="aa_sm">Smoothing</span><span class="v" id="aasmV">5</span></div>
+            <input type="range" class="sl" id="aasm" min="1" max="10" step="1"></div>
+          <div class="srow"><div class="top"><span class="t" data-i18n="aa_di">Max distance</span><span class="v" id="aadiV">∞</span></div>
+            <input type="range" class="sl" id="aadi" min="0" max="1000" step="10"></div>
+          <div class="row" id="aaKeyRow"><div class="lab"><div class="t" data-i18n="aa_key">Hold key</div><div class="d" data-i18n="aa_key_d">click, then press a key</div></div>
+            <button class="btn" id="aaKeyBtn">ALT</button></div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_aimstat">Status</h3>
+          <div class="stat"><span class="k" data-i18n="st_aat">locked</span><span class="v" id="stAa">—</span></div>
+          <div class="stat"><span class="k" data-i18n="st_aafov">active zone</span><span class="v" id="stAaFov">—</span></div>
+          <div class="stat"><span class="k" data-i18n="st_aazoom">zoom (measured)</span><span class="v" id="stAaZoom">—</span></div>
+        </div>
+      </div>
+
+      <!-- ==================== MISC ==================== -->
+      <div class="page" id="pg-misc">
+        <div class="sec"><h3 data-i18n="s_misc">Misc</h3>
+          <div class="row" data-k="show_l81_users"><div class="lab"><div class="t" data-i18n="l81u">L81 crew</div><div class="d" data-i18n="l81u_d">who sits at the mortar</div></div><div class="sw"></div></div>
+          <div class="row" data-k="show_proj_trail"><div class="lab"><div class="t" data-i18n="mtrail">Mortar trails</div><div class="d" data-i18n="mtrail_d">L81 round arc + impact point</div></div><div class="sw"></div></div>
+        </div>
+      </div>
+
+      <!-- ==================== CHAMPS / GLOW ==================== -->
+      <div class="page" id="pg-chams">
+        <div class="sec"><h3 data-i18n="s_chams">Champs</h3>
+          <div class="row" data-k="cham_on"><div class="lab"><div class="t" data-i18n="cham">Player chams</div><div class="d" data-i18n="cham_d">full-body fill, through walls</div></div><div class="sw"></div></div>
+          <div class="row" data-k="cham_team"><div class="lab"><div class="t" data-i18n="cham_t">Chams teammates</div><div class="d" data-i18n="cham_t_d">also draw own faction</div></div><div class="sw"></div></div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_chstat">Status</h3>
+          <div class="stat"><span class="k" data-i18n="st_cham">chams drawn</span><span class="v" id="stCham">—</span></div>
+        </div>
+      </div>
+
+      <div class="page" id="pg-col">
+        <div class="sec"><h3 data-i18n="s_marks">Marker palette</h3>
+          <div class="grid2" id="palRows1"></div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_lbls">Labels & bars</h3>
+          <div class="grid2" id="palRows2"></div>
+          <div class="srow"><div class="top"><span class="t" data-i18n="dim">Dim invisible</span><span class="v" id="dimV">50%</span></div>
+            <input type="range" class="sl" id="dim" min="0" max="100" step="1"></div>
+        </div>
+      </div>
+
+      <!-- ==================== SYSTEM ==================== -->
+      <div class="page" id="pg-sys">
+        <div class="sec"><h3 data-i18n="s_cfg">Config</h3>
+          <div class="btns">
+            <button class="btn pri" id="bSave" data-i18n="save">Save config</button>
+            <button class="btn" id="bLoad" data-i18n="load">Load config</button>
+            <button class="btn" id="bDef" data-i18n="def">Defaults</button>
+          </div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_stat">Status</h3>
+          <div class="stat"><span class="k" data-i18n="st_fps">render FPS</span><span class="v" id="stFps">—</span></div>
+          <div class="stat"><span class="k" data-i18n="st_tgt">targets in frame</span><span class="v" id="stTgt">—</span></div>
+          <div class="stat"><span class="k" data-i18n="st_pid">game PID</span><span class="v" id="stPid">—</span></div>
+          <div class="stat"><span class="k" data-i18n="st_l81">L81 found</span><span class="v" id="stL81">—</span></div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_keys">Keys</h3>
+          <div class="stat"><span class="k">F1 / HOME</span><span class="v" data-i18n="k_menu">toggle menu</span></div>
+          <div class="stat"><span class="k">INSERT</span><span class="v" data-i18n="k_gdi">legacy GDI menu</span></div>
+          <div class="stat"><span class="k">F2 … F9</span><span class="v" data-i18n="k_quick">quick toggles</span></div>
+        </div>
+        <div class="sec"><h3 data-i18n="s_about">About</h3>
+          <div class="stat"><span class="k">build</span><span class="v a">BLAQUE UI · WebView2</span></div>
+          <div class="stat"><span class="k">core</span><span class="v">mrzvCore</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="cpop"><div id="cpopGrid"></div>
+  <div id="cpopCur"><div class="sw" id="cpopSw"></div><span id="cpopHex"></span></div>
+</div>
+<div id="toasts"></div>
+
+<script>
+/* ============================ i18n ============================ */
+const I18N = {
+  rus: {
+    sub:"| WarDogs ЕСП", wait:"ожидание…", online:"в игре", offline:"игра не найдена",
+    s_players:"Игроки", s_info:"Информация", s_info2:"Дальность", s_chams:"Чамсы",
+    s_veh:"Техника", s_misc:"Разное", s_pred:"Упреждение",
+    s_marks:"Палитра маркеров", s_lbls:"Подписи и полосы", s_cfg:"Конфиг", s_stat:"Статус", s_keys:"Клавиши", s_about:"О программе",
+    master:"Общий тумблер", master_d:"всё включить/выключить",
+    boxes:"Боксы", boxes_d:"уголки вокруг цели", skel:"Скелет", skel_d:"кости по имени",
+    names:"Имена", names_d:"санитизированный ник", hpbar:"Здоровье", hpbar_d:"слева, цвет по значению",
+    armor:"Броня", armor_d:"прочность пластин",
+    dist:"Дистанция", dist_d:"метры под маркером", weap:"Оружие", weap_d:"предмет в руках",
+    head:"Маркер головы", head_d:"точка на кости головы", vis:"Только видимые", vis_d:"фильтр прямой видимости",
+    team:"Союзники", team_d:"маркеры своего сквада",
+    cham:"Чамсы игроков", cham_d:"заливка тела, сквозь стены",
+    cham_t:"Свои тоже", cham_t_d:"рисовать свою фракцию",
+    st_cham:"нарисовано чамсов", s_chstat:"Статус",
+    maxd:"Дальность, м", skeld:"Скелет до, м", linew:"Толщина линий",
+    prev:"ЕСП превью", c_box:"Бокс", c_nick:"Ник", c_weap:"Оружие", c_dist:"Дист", c_armor:"Броня", demo_hp:"демо HP",
+    vmark:"Маркеры техники", vmark_d:"маркер на самом корпусе", varmed:"Только вооружённые", varmed_d:"турели и пушки",
+    vhp:"HP техники", vhp_d:"прочность корпуса",
+    lmark:"Точка упреждения", lmark_d:"круг: пристрелка + просадка", lnum:"Цифры упреждения", lnum_d:"42 м / 0.85 с",
+    lzero:"Учёт пристрелки", lzero_d:"вычитать пристрелку прицела", lveh:"Упрежд. техники", lveh_d:"считать и по корпусам",
+    dim:"Затемнение невидимых",
+    l81u:"Расчёт L81", l81u_d:"кто сидит за миномётом",
+    mtrail:"Траектории мин", mtrail_d:"дуга полёта + точка падения",
+    s_wstat:"Статус ленты", st_wpost:"отправлено", st_wcode:"ingest http",
+    wstep1:"Радар ВКЛ здесь", wstep2:"ARM в веб-карте → клик",
+    wstep3:"F12 доводит ствол",
+    web2:"Веб-карта", web2_d:"радар в браузере 127.0.0.1:3000",
+    aimp:"Превью", aimp_d:"дуга + точка + круг из живых углов",
+    aimr:"Радар (F11)", aimr_d:"клик ставит цель",
+    aiml:"Лок (F12)", aiml_d:"ведёт ствол на цель",
+    save:"Сохранить", load:"Загрузить", def:"По умолчанию",
+    st_fps:"FPS рендера", st_tgt:"целей в кадре", st_pid:"PID игры", st_l81:"найдено L81",
+    k_menu:"показать/скрыть меню", k_gdi:"старое GDI-меню", k_quick:"быстрые тумблеры",
+    t_saved:"Конфиг сохранён", t_loaded:"Конфиг загружен", t_def:"Дефолты восстановлены",
+    fac:"фракция",
+    names_pal:["Враг A","Враг B","Враг C","Свой сквад","Неизв. фракция","Погибший"],
+    names_lbl:["Текст имени","Оружие","Дистанция","Полоса брони","Точка головы","HP высокое","HP низкое","Панель L81","Круг FOV"],
+    aa_zone:"Зона под оптикой", aa_zone_d:"клик — переключить режим",
+    aa_zm0:"Экран", aa_zm1:"По FOV", aa_zm2:"АВТО", st_aazoom:"зум (измерен)",
+    s_aim:"Ассист наводки", s_aimctl:"Управление", s_aimstat:"Статус",
+    aa_on:"Ассист", aa_on_d:"удерживай клавишу — прицел ведётся в голову",
+    aa_fov:"Рисовать круг FOV", aa_fov_d:"круг он же зона захвата",
+    aa_vis:"Только видимые", aa_vis_d:"пропускать тех, кого движок не рисует",
+    aa_team:"Вести и своих", aa_team_d:"захватывать свой сквад и фракцию",
+    aa_bone:"Кость головы", aa_bone_d:"вкл — голова, выкл — шея",
+    aa_fovpx:"Радиус FOV", aa_sm:"Мягкость", aa_di:"Дальность захвата",
+    aa_key:"Клавиша удержания", aa_key_d:"нажми, потом жми клавишу",
+    st_aat:"захвачено", st_aafov:"активная зона",
+  },
+  eng: {
+    sub:"| WarDogs ESP", wait:"waiting…", online:"in game", offline:"game not found",
+    s_players:"Players", s_info:"Info", s_info2:"Range", s_chams:"Chams",
+    s_veh:"Vehicles", s_misc:"Misc", s_pred:"Prediction",
+    s_marks:"Marker palette", s_lbls:"Labels & bars", s_cfg:"Config", s_stat:"Status", s_keys:"Keys", s_about:"About",
+    master:"Master switch", master_d:"everything on/off",
+    boxes:"Boxes", boxes_d:"corner box around pawn", skel:"Skeleton", skel_d:"bones by name",
+    names:"Names", names_d:"sanitized nickname", hpbar:"Health", hpbar_d:"left side, colour by value",
+    armor:"Armor", armor_d:"plate durability",
+    dist:"Distance", dist_d:"metres under marker", weap:"Weapon", weap_d:"held item name",
+    head:"Head marker", head_d:"dot on head bone", vis:"Only visible", vis_d:"LOS filter",
+    team:"Teammates", team_d:"own squad markers",
+    cham:"Player chams", cham_d:"full-body fill, through walls",
+    cham_t:"Chams teammates", cham_t_d:"also draw own faction",
+    st_cham:"chams drawn", s_chstat:"Status",
+    maxd:"Max distance", skeld:"Skeleton up to", linew:"Line thickness",
+    prev:"ESP preview", c_box:"Box", c_nick:"Nick", c_weap:"Weapon", c_dist:"Dist", c_armor:"Armor", demo_hp:"demo HP",
+    vmark:"Vehicle markers", vmark_d:"marker on the hull itself", varmed:"Armed only", varmed_d:"turrets and guns",
+    vhp:"Vehicle HP", vhp_d:"hull integrity bar",
+    lmark:"Lead marker", lmark_d:"aim circle: zeroing + drop", lnum:"Lead numbers", lnum_d:"42 m / 0.85 s",
+    lzero:"Zeroing aware", lzero_d:"subtract scope dial-in", lveh:"Lead vehicles", lveh_d:"predict hull movement too",
+    dim:"Dim invisible",
+    l81u:"L81 crew", l81u_d:"who sits at the mortar",
+    mtrail:"Mortar trails", mtrail_d:"round arc + impact point",
+    s_wstat:"Feed status", st_wpost:"posted", st_wcode:"ingest http",
+    wstep1:"Radar ON here", wstep2:"ARM in web map → click",
+    wstep3:"F12 locks the tube",
+    web2:"Web map feed", web2_d:"browser radar 127.0.0.1:3000",
+    aimp:"Preview", aimp_d:"arc + impact + blast from live angles",
+    aimr:"Radar (F11)", aimr_d:"click sets target",
+    aiml:"Lock (F12)", aiml_d:"drive tube to target",
+    save:"Save config", load:"Load config", def:"Defaults",
+    st_fps:"render FPS", st_tgt:"targets in frame", st_pid:"game PID", st_l81:"L81 found",
+    k_menu:"toggle menu", k_gdi:"legacy GDI menu", k_quick:"quick toggles",
+    t_saved:"Config saved", t_loaded:"Config loaded", t_def:"Defaults restored",
+    fac:"faction",
+    names_pal:["Hostile A","Hostile B","Hostile C","Own squad","Unknown faction","Downed"],
+    names_lbl:["Name text","Weapon","Distance","Armor bar","Head dot","HP high","HP low","L81 panel","FOV circle"],
+    aa_zone:"Capture zone under zoom", aa_zone_d:"click to cycle the mode",
+    aa_zm0:"Screen", aa_zm1:"By FOV", aa_zm2:"AUTO", st_aazoom:"zoom (measured)",
+    s_aim:"Aim assist", s_aimctl:"Control", s_aimstat:"Status",
+    aa_on:"Assist", aa_on_d:"hold the key — crosshair locks the head",
+    aa_fov:"Draw FOV circle", aa_fov_d:"the circle is also the capture zone",
+    aa_vis:"Visible only", aa_vis_d:"skip targets the engine does not render",
+    aa_team:"Assist teammates", aa_team_d:"also lock own squad and faction",
+    aa_bone:"Head bone", aa_bone_d:"on = head, off = neck",
+    aa_fovpx:"FOV radius", aa_sm:"Smoothing", aa_di:"Max distance",
+    aa_key:"Hold key", aa_key_d:"click, then press a key",
+    st_aat:"locked", st_aafov:"active zone",
+  }
+};
+let LANG = 'eng';
+const T = () => I18N[LANG];
+
+/* палитра: индексы BR_ColorSlot */
+const PAL_MARKS = [0,1,2,3,4,5];
+const PAL_LBLS  = [6,7,8,9,10,11,12,13,14];
+
+/* ============================ мост ============================ */
+const WV = window.chrome?.webview;
+function send(s){ if(WV) WV.postMessage(s); }
+let bridgeOK = false;
+
+/* ============================ вкладки ============================ */
+const TABS = [
+  {id:'esp',  ic:'<path d="M12 2 8 6v5l4 11 4-11V6l-4-4Z"/><circle cx="12" cy="9" r="2.4"/>'},
+  {id:'aim',  ic:'<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/>'},
+  {id:'veh',  ic:'<path d="M3 13l2-5h11l3 3h2v4h-2a2.5 2.5 0 0 1-5 0H10a2.5 2.5 0 0 1-5 0H3v-2Z"/>'},
+  {id:'misc', ic:'<path d="M4 7h16M4 12h16M4 17h16"/><circle cx="9" cy="7" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="9" cy="17" r="2"/>'},
+  {id:'chams', ic:'<path d="M12 2 8 6v5l4 11 4-11V6l-4-4Z"/><circle cx="12" cy="9" r="2.4"/>'},
+  {id:'col',  ic:'<circle cx="8" cy="8" r="5"/><circle cx="16" cy="8" r="5"/><circle cx="8" cy="16" r="5"/><circle cx="16" cy="16" r="5"/>'},
+  {id:'sys',  ic:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/>'},
+];
+const TAB_NAME = {esp:'ESP', aim:'s_aim', veh:'s_veh', misc:'s_misc', chams:'s_chams', col:'s_marks', sys:'s_cfg'};
+function buildRail(){
+  const rail = document.getElementById('rail');
+  rail.innerHTML = '';
+  TABS.forEach((t,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tab' + (i===0?' act':'');
+    d.id = 'tab-'+t.id;
+    d.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${t.ic}</svg><span></span>`;
+    d.onclick = ()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('act'));
+      d.classList.add('act'); document.querySelectorAll('.page').forEach(x=>x.classList.remove('act'));
+      document.getElementById('pg-'+t.id).classList.add('act'); };
+    rail.appendChild(d);
+  });
+}
+function retabs(){
+  document.querySelectorAll('#rail .tab span:last-child').forEach((s,i)=>{
+    const k = TAB_NAME[TABS[i].id];
+    s.textContent = (k==='ESP')?'ESP':T()[k]||k;
+  });
+}
+
+/* ============================ тумблеры/слайдеры ============================ */
+function bindToggles(){
+  document.querySelectorAll('.row[data-k]').forEach(r=>{
+    const sw = r.querySelector('.sw');
+    sw.onclick = ()=>{
+      const on = !sw.classList.contains('on');
+      sw.classList.toggle('on',on); r.classList.toggle('off',!on);
+      send('set:'+r.dataset.k+':'+(on?1:0));
+    };
+  });
+}
+function slider(elm, get, set, fmt){
+  const upd = ()=>{
+    const p = (elm.value-elm.min)/(elm.max-elm.min)*100;
+    elm.style.setProperty('--p', p+'%'); set(+elm.value); };
+  elm.oninput = upd; upd();
+}
+function bindSliders(){
+  const mx=document.getElementById('maxd'), sx=document.getElementById('skeld');
+  mx.oninput = ()=>{ const v=+mx.value; document.getElementById('maxdV').textContent = v? v+' m':'∞';
+    mx.style.setProperty('--p',(v/2000*100)+'%'); send('set:max_distance:'+(v*100)); };
+  sx.oninput = ()=>{ const v=+sx.value; document.getElementById('skeldV').textContent = v? v+' m':'∞';
+    sx.style.setProperty('--p',(v/2000*100)+'%'); send('set:skel_distance:'+(v*100)); };
+  const lw=document.getElementById('linew');
+  lw.oninput = ()=>{ const v=+lw.value; document.getElementById('linewV').textContent=v+' px';
+    lw.style.setProperty('--p',((v-1)/3*100)+'%'); send('set:line_w:'+v); };
+  const dim=document.getElementById('dim');
+  dim.oninput = ()=>{ const v=+dim.value; document.getElementById('dimV').textContent=v+'%';
+    dim.style.setProperty('--p',v+'%'); send('set:dim_pct:'+v); };
+  /* --- aim assist --- */
+  const af=document.getElementById('aafov');
+  af.oninput = ()=>{ const v=+af.value; document.getElementById('aafovV').textContent=v+' px';
+    af.style.setProperty('--p',((v-30)/570*100)+'%'); send('set:aa_fov_px:'+v); };
+  const as=document.getElementById('aasm');
+  as.oninput = ()=>{ const v=+as.value; document.getElementById('aasmV').textContent=v;
+    as.style.setProperty('--p',((v-1)/9*100)+'%'); send('set:aa_smooth:'+v); };
+  const ad=document.getElementById('aadi');
+  ad.oninput = ()=>{ const v=+ad.value; document.getElementById('aadiV').textContent = v? v+' m':'∞';
+    ad.style.setProperty('--p',(v/1000*100)+'%'); send('set:aa_dist:'+v); };
+  bindKeyBinder();
+  bindZoneBtn();
+}
+
+/* Режим масштабирования зоны. Вращается по кругу, значение пишется в чит
+   кодом 0/1/2 (см. aa_zoom_mode). AUTO — по измеренному масштабу, он честен
+   для любого способа, которым игра делает зум. */
+let aaZoneMode = 2;
+const AA_ZM_KEY = ['aa_zm0','aa_zm1','aa_zm2'];
+function aaZonePaint(){ const b=document.getElementById('aaZoneBtn');
+  if(b) b.textContent = T()[AA_ZM_KEY[aaZoneMode]] || 'AUTO'; }
+function bindZoneBtn(){
+  const b=document.getElementById('aaZoneBtn');
+  if(!b) return;
+  b.onclick = ()=>{ aaZoneMode = (aaZoneMode+1)%3; aaZonePaint(); send('set:aa_zoom_mode:'+aaZoneMode); };
+}
+
+/* Привязка клавиши удержания. Пока идёт захват, все нажатия перехватываются
+   на уровне страницы: иначе Alt/F/Insert отработали бы как горячие клавиши
+   чита и в игре. Код клавиши уходит в чит числом (VK), поэтому раскладка и
+   язык значения не имеют. */
+const VK_NAME = {1:'LMB',2:'RMB',4:'MMB',5:'X1',6:'X2',9:'TAB',16:'SHIFT',17:'CTRL',18:'ALT',
+  20:'CAPS',32:'SPACE',160:'LSHIFT',161:'RSHIFT',162:'LCTRL',163:'RCTRL',164:'LALT',165:'RALT'};
+function vkName(vk){
+  if(VK_NAME[vk]) return VK_NAME[vk];
+  if(vk>=112 && vk<=123) return 'F'+(vk-111);
+  if(vk>=48 && vk<=57) return String.fromCharCode(vk);
+  if(vk>=65 && vk<=90) return String.fromCharCode(vk);
+  return 'VK 0x'+vk.toString(16).toUpperCase();
+}
+let aaKeyVK = 18;        /* ALT по умолчанию */
+let aaBind = false;
+function aaKeyPaint(){ const b=document.getElementById('aaKeyBtn');
+  if(b) b.textContent = aaBind ? '…' : vkName(aaKeyVK); }
+function bindKeyBinder(){
+  const b=document.getElementById('aaKeyBtn');
+  if(!b) return;
+  b.onclick = ()=>{ aaBind = !aaBind; aaKeyPaint(); };
+  window.addEventListener('keydown', e=>{
+    if(!aaBind) return;
+    e.preventDefault(); e.stopPropagation();
+    if(e.key==='Escape'){ aaBind=false; aaKeyPaint(); return; }
+    aaKeyVK = e.keyCode; aaBind=false; aaKeyPaint();
+    send('set:aa_key:'+aaKeyVK);
+    toast(T().aa_key+': '+vkName(aaKeyVK));
+  }, true);
+  window.addEventListener('mousedown', e=>{
+    if(!aaBind) return;
+    e.preventDefault(); e.stopPropagation();
+    const m={0:1,1:4,2:2,3:5,4:6}[e.button];
+    if(m){ aaKeyVK=m; aaBind=false; aaKeyPaint(); send('set:aa_key:'+m); }
+  }, true);
+}
+
+/* ============================ цвета ============================ */
+const FAC_OK = new Set([6,8,10]);   /* use_fac осмыслен только тут */
+function buildPal(){
+  const mk = (i, nameKey) => {
+    const row = document.createElement('div'); row.className='crow';
+    row.innerHTML = `<div class="swb" data-ci="${i}"></div>
+      <div class="cl"></div>
+      ${FAC_OK.has(i)?`<div class="cf"><span class="fac-t"></span><div class="msw" data-fi="${i}"></div></div>`:''}`;
+    row.querySelector('.swb').onclick = e=>openCpop(i, e);
+    const ms = row.querySelector('.msw');
+    if(ms) ms.onclick = ()=>{ ms.classList.toggle('on');
+      send('fac:'+i+':'+(ms.classList.contains('on')?1:0)); };
+    row.querySelector('.cl').dataset.pal = nameKey;
+    return row;
+  };
+  const g1=document.getElementById('palRows1'), g2=document.getElementById('palRows2');
+  g1.innerHTML=''; g2.innerHTML='';
+  PAL_MARKS.forEach((i,ix)=>g1.appendChild(mk(i, 'pal:'+ix)));
+  PAL_LBLS .forEach((i,ix)=>g2.appendChild(mk(i, 'lbl:'+ix)));
+}
+function repal(){
+  document.querySelectorAll('[data-pal]').forEach(el=>{
+    const [kind,ixs]=el.dataset.pal.split(':'); const ix=+ixs;
+    el.textContent = (kind==='pal') ? T().names_pal[ix] : T().names_lbl[ix];
+  });
+  document.querySelectorAll('.fac-t').forEach(e=>e.textContent=T().fac);
+}
+
+/* ============================ ESP превью ============================ */
+function applyPreviewColors(){
+  /* цвета берутся из живых инпутов палитры */
+  const get = i => { const s=document.querySelector(`.swb[data-ci="${i}"]`);
+    return s? (s.style.background||'#ffffff') : '#ffffff'; };
+  document.getElementById('lb-name').style.color  = get(6);
+  document.getElementById('lb-weap').style.color  = get(7);
+  document.getElementById('lb-dist').style.color  = get(8);
+  const box = document.getElementById('pbox');
+  box.style.setProperty('--c-box', get(0));
+}
+
+/* drag-n-drop подписей как в референсе */
+function bindDnD(){
+  let dragEl=null;
+  document.querySelectorAll('.plabel').forEach(el=>{
+    el.addEventListener('pointerdown', ev=>{
+      dragEl=el; el.classList.add('drag'); el.setPointerCapture(ev.pointerId);
+    });
+    el.addEventListener('pointermove', ev=>{
+      if(dragEl!==el) return;
+      const st=document.getElementById('stage').getBoundingClientRect();
+      let x=ev.clientX-st.left, y=ev.clientY-st.top;
+      x=Math.max(2,Math.min(st.width-el.offsetWidth-2, x-el.offsetWidth/2));
+      y=Math.max(2,Math.min(st.height-el.offsetHeight-2, y-el.offsetHeight/2));
+      el.style.left=x+'px'; el.style.top=y+'px'; el.style.right='auto'; el.style.transform='none';
+    });
+    el.addEventListener('pointerup', ev=>{
+      el.classList.remove('drag'); dragEl=null;
+      /* обмен позициями при пересечении с другой подписью */
+      const me=el.getBoundingClientRect();
+      document.querySelectorAll('.plabel').forEach(o=>{
+        if(o===el) return;
+        const r=o.getBoundingClientRect();
+        const hit = !(me.right<r.left||me.left>r.right||me.bottom<r.top||me.top>r.bottom);
+        if(hit){ const t=el.style.cssText; el.style.cssText=o.style.cssText; o.style.cssText=t; }
+      });
+    });
+  });
+}
+
+/* мини-тумблеры превью */
+function bindChips(){
+  document.querySelectorAll('.pchip').forEach(c=>{
+    c.onclick=()=>{
+      c.classList.toggle('on');
+      const t=c.dataset.p;
+      const map={pbox:'pbox',pHp:'php','lb-armor':'parmor'};
+      if(map[t]) document.getElementById(map[t]).style.setProperty('--o', c.classList.contains('on')?1:0);
+      else { const el=document.getElementById(t); el.style.display = c.classList.contains('on')?'':'none'; }
+    };
+  });
+  document.querySelectorAll('.pchip[data-p="pbox"],.pchip[data-p="pHp"],.pchip[data-p="lb-armor"],.pchip[data-p="lb-name"],.pchip[data-p="lb-weap"],.pchip[data-p="lb-dist"]').forEach(c=>c.classList.add('on'));
+  const hp=document.getElementById('hpSl');
+  hp.oninput=()=>{ document.getElementById('phpFill').style.setProperty('--hp',hp.value+'%');
+    document.getElementById('hpV').textContent=hp.value+'%';
+    const hi=document.querySelector('.swb[data-ci="11"]'), lo=document.querySelector('.swb[data-ci="12"]');
+    const c = hp.value>50? (hi?hi.value:'#74de80') : (lo?lo.value:'#f87171');
+    document.getElementById('phpFill').style.background=c;
+    /* броня тянется за HP для демонстрации, отдельного демо-слайдера нет */
+    const ar=Math.round(hp.value*0.7);
+    document.getElementById('parmorFill').style.setProperty('--ar',ar+'%');
+    hp.style.setProperty('--p',hp.value+'%'); };
+  hp.oninput();
+}
+
+/* ============================ кнопки/язык/тосты ============================ */
+function toast(msg){
+  const t=document.createElement('div'); t.className='toast';
+  t.innerHTML=`<span class="ti"></span>${msg}`;
+  document.getElementById('toasts').appendChild(t);
+  setTimeout(()=>{t.classList.add('bye'); setTimeout(()=>t.remove(),350)},2200);
+}
+function bindButtons(){
+  document.getElementById('bSave').onclick=()=>{send('act:save');toast(T().t_saved)};
+  document.getElementById('bLoad').onclick=()=>{send('act:load');toast(T().t_loaded)};
+  document.getElementById('bDef').onclick =()=>{send('act:def'); toast(T().t_def)};
+  document.getElementById('langBtn').onclick=()=>{
+    LANG = LANG==='eng'?'rus':'eng';
+    document.getElementById('langBtn').textContent = LANG.toUpperCase();
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k=el.dataset.i18n; if(T()[k]!==undefined) el.textContent=T()[k];
+    });
+    retabs(); repal(); aaZonePaint(); send('lang:'+LANG);
+  };
+  /* drag окна за шапку: полный цикл в JS (WebView ест мышь у хост-окна).
+     pointermove шлёт хосту дельту от точки старта, хост двигает окно. */
+  {
+    const head = document.getElementById('head');
+    let dstart=null;
+    head.addEventListener('pointerdown',e=>{
+      if(e.target.closest('.pill')||e.target.closest('#closeBtn')) return;
+      dstart={x:e.screenX,y:e.screenY};
+      head.setPointerCapture(e.pointerId);
+    });
+    head.addEventListener('pointermove',e=>{
+      if(!dstart) return;
+      send('drag:'+e.screenX+','+e.screenY+','+(e.screenX-dstart.x)+','+(e.screenY-dstart.y));
+    });
+    const end=e=>{ if(dstart){ dstart=null; send('dragend:'); } };
+    head.addEventListener('pointerup',end);
+    head.addEventListener('pointercancel',end);
+  }
+  /* закрытие меню кнопкой */
+  document.getElementById('closeBtn').onclick=()=>{ send('close:'); };
+}
+
+
+/* ===== собственный color-popup ===== */
+const CPOP_COLORS = ["#ffffff","#d9d9d9","#a3a3a3","#6e6e6e","#404040","#1a1a1a","#000000","#ff4d4d","#e02020","#a31616","#7a1010","#ff9a3d","#e07b20","#c05a00","#8a4000","#ffd93d","#e0b820","#c0a000","#8a7a00","#74de80","#3fbf4e","#1f9e30","#0e7a1f","#6fe0a0","#3dcf8a","#1fae6c","#0d8a52","#60b5ff","#2e8ae0","#1565c0","#0a4a90","#8b5cf6","#7433e0","#5a1fb8","#3d0f8a","#e07be0","#c74fc7","#a12fa1","#7a1a7a","#ffb3c6","#ff7aa2","#e04c7e","#b02a58","#a3704a","#7a4e2e","#5a3820","#3d2615","#0ff6e0"];
+let cpop_slot = -1;
+function openCpop(i, ev){ cpop_slot = i;
+  const pop = document.getElementById("cpop"), grid = document.getElementById("cpopGrid");
+  grid.innerHTML = "";
+  CPOP_COLORS.forEach(hex=>{ const d = document.createElement("div"); d.className="cc"; d.style.background=hex; d.onclick = ()=>applyCpop(hex); grid.appendChild(d); });
+  const cur = document.querySelector(`.swb[data-ci="${i}"]`);
+  document.getElementById("cpopSw").style.background = cur? cur.style.background||"#888":"#888";
+  const r = ev.target.getBoundingClientRect();
+  pop.classList.add("open");
+  let x = r.right + 8, y = r.top;
+  if(x + pop.offsetWidth > innerWidth - 8) x = r.left - pop.offsetWidth - 8;
+  if(y + pop.offsetHeight > innerHeight - 8) y = innerHeight - pop.offsetHeight - 8;
+  pop.style.left = x+"px"; pop.style.top = y+"px";
+}
+function applyCpop(hex){
+  const r=parseInt(hex.substr(1,2),16),g=parseInt(hex.substr(3,2),16),b=parseInt(hex.substr(5,2),16);
+  const swb = document.querySelector(`.swb[data-ci="${cpop_slot}"]`);
+  if(swb) swb.style.background = hex;
+  document.getElementById("cpop").classList.remove("open");
+  send("col:"+cpop_slot+":"+r+","+g+","+b);
+  applyPreviewColors();
+}
+document.addEventListener("pointerdown", e=>{ const pop = document.getElementById("cpop");
+  if(pop && pop.classList.contains("open") && !pop.contains(e.target) && !e.target.closest(".swb")) pop.classList.remove("open"); }, true);
+
+/* ============================ приём состояния ============================ */
+function applyState(cfg){
+  bridgeOK=true;
+  document.querySelectorAll('.row[data-k]').forEach(r=>{
+    const sw=r.querySelector('.sw'); const v=cfg[r.dataset.k];
+    if(v===undefined) return;
+    sw.classList.toggle('on', !!v); r.classList.toggle('off', !v);
+  });
+  if(cfg.max_distance!==undefined){ const m=Math.round(cfg.max_distance/100);
+    const mx=document.getElementById('maxd'); mx.value=m;
+    document.getElementById('maxdV').textContent = m? m+' m':'∞';
+    mx.style.setProperty('--p',(m/2000*100)+'%'); }
+  if(cfg.skel_distance!==undefined){ const m=Math.round(cfg.skel_distance/100);
+    const sx=document.getElementById('skeld'); sx.value=m;
+    document.getElementById('skeldV').textContent = m? m+' m':'∞';
+    sx.style.setProperty('--p',(m/2000*100)+'%'); }
+  if(cfg.line_w!==undefined){ const lw=document.getElementById('linew'); lw.value=cfg.line_w;
+    document.getElementById('linewV').textContent=cfg.line_w+' px';
+    lw.style.setProperty('--p',((cfg.line_w-1)/3*100)+'%'); }
+  if(cfg.dim_pct!==undefined){ const d=document.getElementById('dim'); d.value=cfg.dim_pct;
+    document.getElementById('dimV').textContent=cfg.dim_pct+'%';
+    d.style.setProperty('--p',cfg.dim_pct+'%'); }
+  if(cfg.aa_fov_px!==undefined){ const af=document.getElementById('aafov'); af.value=cfg.aa_fov_px;
+    document.getElementById('aafovV').textContent=cfg.aa_fov_px+' px';
+    af.style.setProperty('--p',((cfg.aa_fov_px-30)/570*100)+'%'); }
+  if(cfg.aa_smooth!==undefined){ const as=document.getElementById('aasm'); as.value=cfg.aa_smooth;
+    document.getElementById('aasmV').textContent=cfg.aa_smooth;
+    as.style.setProperty('--p',((cfg.aa_smooth-1)/9*100)+'%'); }
+  if(cfg.aa_dist!==undefined){ const ad=document.getElementById('aadi'); ad.value=cfg.aa_dist;
+    document.getElementById('aadiV').textContent = cfg.aa_dist? cfg.aa_dist+' m':'∞';
+    ad.style.setProperty('--p',(cfg.aa_dist/1000*100)+'%'); }
+  if(cfg.aa_key!==undefined && !aaBind){ aaKeyVK=cfg.aa_key; aaKeyPaint(); }
+  if(cfg.aa_zoom_mode!==undefined){ aaZoneMode=cfg.aa_zoom_mode; aaZonePaint(); }
+  if(cfg.colors) for(const [i,c] of Object.entries(cfg.colors)){
+    const inp=document.querySelector(`.swb[data-ci="${i}"]`); if(!inp) continue;
+    if(document.activeElement===inp || (Date.now()-(+inp.dataset.lastEdit||0))<4000) continue;
+    const h='#'+[c[0],c[1],c[2]].map(x=>x.toString(16).padStart(2,'0')).join('');
+    inp.style.background=h;
+    const ms=document.querySelector(`.msw[data-fi="${i}"]`); if(ms) ms.classList.toggle('on',!!c[3]);
+  }
+  applyPreviewColors();
+}
+function applyTelem(t){
+  const dot=document.getElementById('gdot'), st=document.getElementById('gstat');
+  if(t.pid>0){ dot.classList.add('on'); st.textContent=T().online; }
+  else { dot.classList.remove('on'); st.textContent=T().offline; }
+  document.getElementById('fpsP').textContent=Math.round(t.fps)+' fps';
+  document.getElementById('tgtP').textContent=t.targets+' tgt';
+  document.getElementById('stFps').textContent=Math.round(t.fps);
+  document.getElementById('stTgt').textContent=t.targets;
+  document.getElementById('stPid').textContent=t.pid||'—';
+  document.getElementById('stL81').textContent=t.l81??'—';
+  const sc=document.getElementById('stCham');
+  if(sc) sc.textContent=t.cham_n??'—';
+  const sa=document.getElementById('stAa');
+  if(sa) sa.textContent = t.aa? 'TARGET' : '—';
+  const sf=document.getElementById('stAaFov');
+  if(sf) sf.textContent = (t.aafov? t.aafov : '—') + ' px';
+  const sz=document.getElementById('stAaZoom');
+  if(sz) sz.textContent = (t.aazoom? (t.aazoom/100).toFixed(2) : '—') + 'x';
+  if(sa) sa.className = 'v' + (t.aa? '' : '');
+}
+
+function onHostMsg(ev){
+  const s=ev.data; if(typeof s!=='string') return;
+  const [t,body]= [s.slice(0,s.indexOf(':')), s.slice(s.indexOf(':')+1)];
+  if(t==='state'){ try{ applyState(JSON.parse(body)); }catch(e){} }
+  else if(t==='telem'){ try{ applyTelem(JSON.parse(body)); }catch(e){} }
+  else if(t==='toast'){ toast(body); }
+}
+
+/* ============================ старт ============================ */
+buildRail(); bindToggles(); bindSliders(); buildPal(); bindDnD(); bindChips(); bindButtons();
+retabs(); repal(); aaZonePaint();     /* подписи вкладок/палитры/зоны сразу, не после смены языка */
+document.getElementById('langBtn').textContent='ENG';
+window.addEventListener('message',e=>{ if(e.data&&e.data.__blaqua_init) applyState(e.data.cfg); });
+if(WV) WV.addEventListener('message', onHostMsg);
+send('hello:');
+setInterval(()=>send('ping:'),2000);
+</script>
+</body>
+</html>

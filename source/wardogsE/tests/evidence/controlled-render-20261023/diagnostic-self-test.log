@@ -1,0 +1,10 @@
+REAL parent_pid=38996 child_pid=28320 transport=ReadProcessMemory
+PASS frame=01-normal seq=1 case=0 entities=3 gpu_pixels=verified client=1000x650
+PASS frame=02-moved seq=2 case=1 entities=3 gpu_pixels=verified client=1000x650
+PASS frame=03-camera seq=3 case=2 entities=3 gpu_pixels=verified client=1000x650
+EXPECTED_READ_FAILURE case=3 error=299 old_frame_cleared=1
+PASS frame=04-unreadable seq=4 case=3 entities=0 gpu_pixels=verified client=1000x650
+PASS frame=05-recovered seq=5 case=0 entities=3 gpu_pixels=verified client=1000x650
+EXPECTED_READ_FAILURE case=4 error=299 old_frame_cleared=1
+PASS frame=06-exited seq=5 case=4 entities=0 gpu_pixels=verified client=1000x650
+PASS frames=6 real_read_calls=14 bytes=34952 expected_failures=2 child_exited=1 transparent=0 kernel_tested=0

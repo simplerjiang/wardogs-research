@@ -1,0 +1,205 @@
+﻿### PROCEDURE 0x14000af30
+## PSEUDOCODE
+
+void FUN_14000af30(undefined8 param_1)
+
+{
+  undefined1 auStack_48 [40];
+  undefined1 local_20 [16];
+  ulonglong local_10;
+  
+  local_10 = DAT_140062d80 ^ (ulonglong)auStack_48;
+  (*(code *)0x4b758)(local_20,param_1);
+  (*(code *)0x4b60a)(local_20);
+  if ((local_10 ^ (ulonglong)auStack_48) == DAT_140062d80) {
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_140014fe0();
+}
+
+
+## CALLEES
+{
+    "address":  "0x140014fe0",
+    "body":  {
+                 "available":  true,
+                 "contains_entry":  true,
+                 "non_contiguous":  false,
+                 "provenance":  "ghidra-function-body-address-set",
+                 "ranges":  [
+                                {
+                                    "end":  "0x140014ffd",
+                                    "start":  "0x140014fe0"
+                                }
+                            ],
+                 "span_bytes":  30,
+                 "total_bytes":  30
+             },
+    "classification":  {
+                           "external":  false,
+                           "provenance":  "ghidra-function-manager",
+                           "thunk":  false,
+                           "thunk_target":  null
+                       },
+    "name":  "FUN_140014fe0"
+}
+## CALLERS
+{
+    "address":  "0x14000b120",
+    "body":  {
+                 "available":  true,
+                 "contains_entry":  true,
+                 "non_contiguous":  true,
+                 "provenance":  "ghidra-function-body-address-set",
+                 "ranges":  [
+                                {
+                                    "end":  "0x14000b2e2",
+                                    "start":  "0x14000b120"
+                                },
+                                {
+                                    "end":  "0x14000b3ca",
+                                    "start":  "0x14000b2f0"
+                                },
+                                {
+                                    "end":  "0x14000bd9c",
+                                    "start":  "0x14000b3cc"
+                                }
+                            ],
+                 "span_bytes":  3197,
+                 "total_bytes":  3183
+             },
+    "classification":  {
+                           "external":  false,
+                           "provenance":  "ghidra-function-manager",
+                           "thunk":  false,
+                           "thunk_target":  null
+                       },
+    "name":  "FUN_14000b120"
+}
+## NAMES
+[
+    {
+        "address":  "0x14000af75",
+        "source_address":  "0x14000af6d",
+        "value":  "LAB_14000af75"
+    },
+    {
+        "address":  "0x140014fe0",
+        "source_address":  "0x14000af75",
+        "value":  "FUN_140014fe0"
+    },
+    {
+        "address":  "0x14004ae48",
+        "source_address":  "0x14000af58",
+        "value":  "DAT_14004ae48"
+    },
+    {
+        "address":  "0x14004aec0",
+        "source_address":  "0x14000af4f",
+        "value":  "DAT_14004aec0"
+    },
+    {
+        "address":  "0x140062d80",
+        "source_address":  "0x14000af38",
+        "value":  "DAT_140062d80"
+    },
+    {
+        "address":  "0x140062d80",
+        "source_address":  "0x14000af66",
+        "value":  "DAT_140062d80"
+    }
+]
+## STRINGS
+
+## UNRESOLVED
+[
+    {
+        "address":  "0x14000af4f",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    },
+    {
+        "address":  "0x14000af58",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    }
+]
+## NATIVE_API
+{
+    "available":  true,
+    "calling_convention":  "__fastcall",
+    "decompiler_artifacts":  [
+                                 "recovered-signature",
+                                 "register-and-stack-variables",
+                                 "compiler-generated-control-flow",
+                                 "pointer-arithmetic",
+                                 "pseudocode"
+                             ],
+    "jump_tables":  [
+
+                    ],
+    "limitations":  [
+                        "Types and calling conventions are Ghidra decompiler observations, not source declarations.",
+                        "Register variables, compiler-generated blocks, and pointer arithmetic remain decompiler artifacts.",
+                        "Pseudocode is neither original source nor guaranteed to compile."
+                    ],
+    "parameters":  [
+                       {
+                           "confidence":  "low",
+                           "data_type":  "undefined8",
+                           "decompiler_artifacts":  [
+                                                        "recovered-signature",
+                                                        "register-or-stack-storage",
+                                                        "compiler-generated-variable"
+                                                    ],
+                           "evidence":  [
+                                            {
+                                                "detail":  "Function signature source is default.",
+                                                "kind":  "signature-source",
+                                                "source":  "ghidra-function-manager"
+                                            },
+                                            {
+                                                "detail":  "HighFunction recovered data type undefined8.",
+                                                "kind":  "decompiler-type",
+                                                "source":  "ghidra-high-function"
+                                            }
+                                        ],
+                           "name":  "param_1",
+                           "ordinal":  0,
+                           "role":  "parameter",
+                           "size_bytes":  8,
+                           "storage":  "RCX:8"
+                       }
+                   ],
+    "provenance":  "ghidra-high-function",
+    "pseudocode":  {
+                       "classification":  "decompiler-generated-non-source",
+                       "compilable":  false
+                   },
+    "return_type":  {
+                        "confidence":  "low",
+                        "data_type":  "void",
+                        "decompiler_artifacts":  [
+                                                     "recovered-signature",
+                                                     "register-or-stack-storage"
+                                                 ],
+                        "evidence":  [
+                                         {
+                                             "detail":  "Function signature source is default.",
+                                             "kind":  "signature-source",
+                                             "source":  "ghidra-function-manager"
+                                         },
+                                         {
+                                             "detail":  "HighFunction recovered data type void.",
+                                             "kind":  "decompiler-type",
+                                             "source":  "ghidra-high-function"
+                                         }
+                                     ],
+                        "name":  null,
+                        "ordinal":  null,
+                        "role":  "return",
+                        "size_bytes":  0,
+                        "storage":  "\u003cVOID\u003e"
+                    },
+    "signature_source":  "default"
+}
+

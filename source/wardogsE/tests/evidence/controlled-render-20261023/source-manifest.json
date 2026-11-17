@@ -1,0 +1,19 @@
+{
+  "source_root": "E:\\CodexData\\.codex\\worktrees\\controlled-memory-render\\wardogsE",
+  "unmodified_functions_sha256": {
+    "static void rot_matrix(": "b4ec5eaf122514a892a971d5874fc362fdc3eea01cda6b67b5e5878bf237bd17",
+    "static int w2s_a(": "6992b6ec2aad4323cc0f357955b772ca6c29710c2ddc2f121af8bd9bdd175a42",
+    "static void project_all(": "62a7b7925aeadf81793b44f31d137ae97d64be19d3ee9b16b69b8239d2c6a57b",
+    "static void DrawOverlay(": "35a51b6d618d6b48b12e9716df79901ce101e09ef30399cee05ff1c23cc95ff9"
+  },
+  "gpu_original_sha256": "e7c41fd6a2dd5d9920a7e2c1ca8e979bfd9efb6df1bf9e1b4bfcc8574b03d8dd",
+  "adapters": [
+    "rd -> ReadProcessMemory on owned child",
+    "driver open/base/write -> abort",
+    "WinMain -> controlled test",
+    "menu -> private config, no menu thread",
+    "GPU probe appended for readback before presentation"
+  ],
+  "kernel_tested": false,
+  "game_discovery_or_scan_tested": false
+}

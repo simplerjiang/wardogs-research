@@ -1,0 +1,553 @@
+﻿### PROCEDURE 0x14000a7d0
+## PSEUDOCODE
+
+undefined4 FUN_14000a7d0(void)
+
+{
+  char cVar1;
+  int iVar2;
+  int iVar3;
+  undefined1 auStack_2a8 [32];
+  undefined8 local_288;
+  int *local_280;
+  undefined4 local_278;
+  undefined4 local_274;
+  undefined4 local_270;
+  int local_26c;
+  undefined1 local_268 [16];
+  undefined1 local_258 [528];
+  ulonglong local_48;
+  
+  local_48 = DAT_140062d80 ^ (ulonglong)auStack_2a8;
+  local_26c = 0x48d6988f;
+  local_280 = &local_26c;
+LAB_14000a862:
+  while( true ) {
+    while (local_26c < 0x4a0d5087) {
+      if (local_26c < 0x176c170b) {
+        if (local_26c == -0x7d35bb4a) {
+          iVar3 = FUN_14000aa10(&DAT_140063ef0,local_258);
+          iVar2 = 0x4a0d5087;
+          if (-1 < iVar3) {
+            iVar2 = 0x7068b6cf;
+          }
+          goto LAB_14000a85b;
+        }
+        if (local_26c == -0xa882fd5) {
+          if ((local_48 ^ (ulonglong)auStack_2a8) != DAT_140062d80) {
+                    /* WARNING: Subroutine does not return */
+            FUN_140014fe0();
+          }
+          return local_274;
+        }
+      }
+      else if (local_26c == 0x176c170b) {
+        local_270 = local_278;
+        *local_280 = -0xa882fd5;
+        local_274 = local_278;
+      }
+      else if (local_26c == 0x48d6988f) {
+        cVar1 = FUN_140008c30(L"C:\\Windows\\System32\\Drivers\\abce1.sys",&DAT_14004e220,0x5220);
+        iVar2 = -0xa882fd5;
+        if (cVar1 != '\0') {
+          iVar2 = 0x7b1d84db;
+        }
+        *local_280 = iVar2;
+        local_274 = 0;
+      }
+    }
+    if (0x7068b6ce < local_26c) break;
+    if (local_26c == 0x4a0d5087) {
+      (*(code *)0x4afae)(L"C:\\Windows\\System32\\Drivers\\abce1.sys");
+      *local_280 = 0x176c170b;
+      local_278 = 0;
+    }
+    else if (local_26c == 0x4bb080cf) {
+      (*(code *)0x4b758)(local_268,&DAT_140063ef0);
+      iVar2 = (*(code *)0x4b60a)(local_268);
+      iVar3 = 0x4a0d5087;
+      if (-1 < iVar2) {
+        iVar3 = 0x176c170b;
+      }
+      *local_280 = iVar3;
+      local_278 = 1;
+    }
+  }
+  if (local_26c == 0x7068b6cf) {
+    cVar1 = FUN_1400099b0(L"C:\\Windows\\System32\\Drivers\\abce1.sys:\'",&DAT_140053440,0x84e8);
+    iVar2 = 0x4a0d5087;
+    if (cVar1 != '\0') {
+      iVar2 = 0x4bb080cf;
+    }
+  }
+  else {
+    if (local_26c != 0x7b1d84db) goto LAB_14000a862;
+    local_288 = 0;
+    iVar3 = (*(code *)0x4b714)(L"C:\\Windows\\System32\\Drivers\\abce1.sys:\'",0x208,local_258,0);
+    iVar2 = 0x4a0d5087;
+    if (-1 < iVar3) {
+      iVar2 = -0x7d35bb4a;
+    }
+  }
+LAB_14000a85b:
+  *local_280 = iVar2;
+  goto LAB_14000a862;
+}
+
+
+## CALLEES
+[
+    {
+        "address":  "0x140008c30",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  true,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x140008dd4",
+                                        "start":  "0x140008c30"
+                                    },
+                                    {
+                                        "end":  "0x140008eb5",
+                                        "start":  "0x140008de0"
+                                    },
+                                    {
+                                        "end":  "0x140008f2e",
+                                        "start":  "0x140008ec0"
+                                    },
+                                    {
+                                        "end":  "0x1400099aa",
+                                        "start":  "0x140008f30"
+                                    }
+                                ],
+                     "span_bytes":  3451,
+                     "total_bytes":  3429
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_140008c30"
+    },
+    {
+        "address":  "0x1400099b0",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  false,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x140009f9c",
+                                        "start":  "0x1400099b0"
+                                    }
+                                ],
+                     "span_bytes":  1517,
+                     "total_bytes":  1517
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_1400099b0"
+    },
+    {
+        "address":  "0x14000aa10",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  true,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x14000ab1d",
+                                        "start":  "0x14000aa10"
+                                    },
+                                    {
+                                        "end":  "0x14000ab52",
+                                        "start":  "0x14000ab20"
+                                    },
+                                    {
+                                        "end":  "0x14000ab95",
+                                        "start":  "0x14000ab60"
+                                    },
+                                    {
+                                        "end":  "0x14000af2b",
+                                        "start":  "0x14000aba0"
+                                    }
+                                ],
+                     "span_bytes":  1308,
+                     "total_bytes":  1283
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_14000aa10"
+    },
+    {
+        "address":  "0x140014fe0",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  false,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x140014ffd",
+                                        "start":  "0x140014fe0"
+                                    }
+                                ],
+                     "span_bytes":  30,
+                     "total_bytes":  30
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_140014fe0"
+    }
+]
+## CALLERS
+{
+    "address":  "0x14000b120",
+    "body":  {
+                 "available":  true,
+                 "contains_entry":  true,
+                 "non_contiguous":  true,
+                 "provenance":  "ghidra-function-body-address-set",
+                 "ranges":  [
+                                {
+                                    "end":  "0x14000b2e2",
+                                    "start":  "0x14000b120"
+                                },
+                                {
+                                    "end":  "0x14000b3ca",
+                                    "start":  "0x14000b2f0"
+                                },
+                                {
+                                    "end":  "0x14000bd9c",
+                                    "start":  "0x14000b3cc"
+                                }
+                            ],
+                 "span_bytes":  3197,
+                 "total_bytes":  3183
+             },
+    "classification":  {
+                           "external":  false,
+                           "provenance":  "ghidra-function-manager",
+                           "thunk":  false,
+                           "thunk_target":  null
+                       },
+    "name":  "FUN_14000b120"
+}
+## NAMES
+[
+    {
+        "address":  "0x140008c30",
+        "source_address":  "0x14000a8ed",
+        "value":  "FUN_140008c30"
+    },
+    {
+        "address":  "0x1400099b0",
+        "source_address":  "0x14000a84b",
+        "value":  "FUN_1400099b0"
+    },
+    {
+        "address":  "0x14000a83b",
+        "source_address":  "0x14000a925",
+        "value":  "LAB_14000a83b"
+    },
+    {
+        "address":  "0x14000a85b",
+        "source_address":  "0x14000a95a",
+        "value":  "LAB_14000a85b"
+    },
+    {
+        "address":  "0x14000a85b",
+        "source_address":  "0x14000a980",
+        "value":  "LAB_14000a85b"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a839",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a888",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a8bd",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a8db",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a910",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a930",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a9a0",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a9c1",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a862",
+        "source_address":  "0x14000a9cb",
+        "value":  "LAB_14000a862"
+    },
+    {
+        "address":  "0x14000a8c0",
+        "source_address":  "0x14000a86b",
+        "value":  "LAB_14000a8c0"
+    },
+    {
+        "address":  "0x14000a920",
+        "source_address":  "0x14000a872",
+        "value":  "LAB_14000a920"
+    },
+    {
+        "address":  "0x14000a95f",
+        "source_address":  "0x14000a8c5",
+        "value":  "LAB_14000a95f"
+    },
+    {
+        "address":  "0x14000a985",
+        "source_address":  "0x14000a8d0",
+        "value":  "LAB_14000a985"
+    },
+    {
+        "address":  "0x14000a9a5",
+        "source_address":  "0x14000a87d",
+        "value":  "LAB_14000a9a5"
+    },
+    {
+        "address":  "0x14000a9c6",
+        "source_address":  "0x14000a964",
+        "value":  "LAB_14000a9c6"
+    },
+    {
+        "address":  "0x14000a9fd",
+        "source_address":  "0x14000a9e7",
+        "value":  "LAB_14000a9fd"
+    },
+    {
+        "address":  "0x14000aa10",
+        "source_address":  "0x14000a96c",
+        "value":  "FUN_14000aa10"
+    },
+    {
+        "address":  "0x140014fe0",
+        "source_address":  "0x14000a9fd",
+        "value":  "FUN_140014fe0"
+    },
+    {
+        "address":  "0x14004711a",
+        "source_address":  "0x14000a813",
+        "value":  "u_C:\\Windows\\System32\\Drivers\\abce_14004711a"
+    },
+    {
+        "address":  "0x14004711a",
+        "source_address":  "0x14000a8dd",
+        "value":  "u_C:\\Windows\\System32\\Drivers\\abce_14004711a"
+    },
+    {
+        "address":  "0x14004711a",
+        "source_address":  "0x14000a9a5",
+        "value":  "u_C:\\Windows\\System32\\Drivers\\abce_14004711a"
+    },
+    {
+        "address":  "0x140047464",
+        "source_address":  "0x14000a81f",
+        "value":  "u_C:\\Windows\\System32\\Drivers\\abce_140047464"
+    },
+    {
+        "address":  "0x140047464",
+        "source_address":  "0x14000a83b",
+        "value":  "u_C:\\Windows\\System32\\Drivers\\abce_140047464"
+    },
+    {
+        "address":  "0x14004ab00",
+        "source_address":  "0x14000a9a8",
+        "value":  "DAT_14004ab00"
+    },
+    {
+        "address":  "0x14004ae48",
+        "source_address":  "0x14000a899",
+        "value":  "DAT_14004ae48"
+    },
+    {
+        "address":  "0x14004aea8",
+        "source_address":  "0x14000a82c",
+        "value":  "DAT_14004aea8"
+    },
+    {
+        "address":  "0x14004aec0",
+        "source_address":  "0x14000a890",
+        "value":  "DAT_14004aec0"
+    },
+    {
+        "address":  "0x14004e220",
+        "source_address":  "0x14000a8e0",
+        "value":  "DAT_14004e220"
+    },
+    {
+        "address":  "0x140053440",
+        "source_address":  "0x14000a83e",
+        "value":  "DAT_140053440"
+    },
+    {
+        "address":  "0x140062d80",
+        "source_address":  "0x14000a7e3",
+        "value":  "DAT_140062d80"
+    },
+    {
+        "address":  "0x140062d80",
+        "source_address":  "0x14000a9e0",
+        "value":  "DAT_140062d80"
+    },
+    {
+        "address":  "0x140063ef0",
+        "source_address":  "0x14000a807",
+        "value":  "DAT_140063ef0"
+    },
+    {
+        "address":  "0x140063ef0",
+        "source_address":  "0x14000a88d",
+        "value":  "DAT_140063ef0"
+    },
+    {
+        "address":  "0x140063ef0",
+        "source_address":  "0x14000a966",
+        "value":  "DAT_140063ef0"
+    }
+]
+## STRINGS
+[
+    {
+        "address":  "0x14004711a",
+        "source_address":  "0x14000a813",
+        "value":  "C:\\Windows\\System32\\Drivers\\abce1.sys"
+    },
+    {
+        "address":  "0x14004711a",
+        "source_address":  "0x14000a8dd",
+        "value":  "C:\\Windows\\System32\\Drivers\\abce1.sys"
+    },
+    {
+        "address":  "0x14004711a",
+        "source_address":  "0x14000a9a5",
+        "value":  "C:\\Windows\\System32\\Drivers\\abce1.sys"
+    },
+    {
+        "address":  "0x140047464",
+        "source_address":  "0x14000a81f",
+        "value":  "C:\\Windows\\System32\\Drivers\\abce1.sys:\u0027"
+    },
+    {
+        "address":  "0x140047464",
+        "source_address":  "0x14000a83b",
+        "value":  "C:\\Windows\\System32\\Drivers\\abce1.sys:\u0027"
+    }
+]
+## UNRESOLVED
+[
+    {
+        "address":  "0x14000a890",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    },
+    {
+        "address":  "0x14000a899",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    },
+    {
+        "address":  "0x14000a94d",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    },
+    {
+        "address":  "0x14000a9a8",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    }
+]
+## NATIVE_API
+{
+    "available":  true,
+    "calling_convention":  "__fastcall",
+    "decompiler_artifacts":  [
+                                 "recovered-signature",
+                                 "register-and-stack-variables",
+                                 "compiler-generated-control-flow",
+                                 "pointer-arithmetic",
+                                 "pseudocode"
+                             ],
+    "jump_tables":  [
+
+                    ],
+    "limitations":  [
+                        "Types and calling conventions are Ghidra decompiler observations, not source declarations.",
+                        "Register variables, compiler-generated blocks, and pointer arithmetic remain decompiler artifacts.",
+                        "Pseudocode is neither original source nor guaranteed to compile."
+                    ],
+    "parameters":  [
+
+                   ],
+    "provenance":  "ghidra-high-function",
+    "pseudocode":  {
+                       "classification":  "decompiler-generated-non-source",
+                       "compilable":  false
+                   },
+    "return_type":  {
+                        "confidence":  "low",
+                        "data_type":  "undefined4",
+                        "decompiler_artifacts":  [
+                                                     "recovered-signature",
+                                                     "register-or-stack-storage"
+                                                 ],
+                        "evidence":  [
+                                         {
+                                             "detail":  "Function signature source is default.",
+                                             "kind":  "signature-source",
+                                             "source":  "ghidra-function-manager"
+                                         },
+                                         {
+                                             "detail":  "HighFunction recovered data type undefined4.",
+                                             "kind":  "decompiler-type",
+                                             "source":  "ghidra-high-function"
+                                         }
+                                     ],
+                        "name":  null,
+                        "ordinal":  null,
+                        "role":  "return",
+                        "size_bytes":  4,
+                        "storage":  "EAX:4"
+                    },
+    "signature_source":  "default"
+}
+

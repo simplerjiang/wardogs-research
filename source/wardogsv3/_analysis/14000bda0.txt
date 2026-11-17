@@ -1,0 +1,773 @@
+﻿### PROCEDURE 0x14000bda0
+## PSEUDOCODE
+
+undefined1 FUN_14000bda0(undefined8 *param_1,ulonglong param_2,undefined8 param_3,ulonglong param_4)
+
+{
+  int iVar1;
+  uint uVar2;
+  ulonglong uVar3;
+  longlong lVar4;
+  ulonglong uVar5;
+  ulonglong uVar6;
+  bool bVar7;
+  undefined1 local_1ca;
+  undefined1 local_1c9;
+  int local_1bc;
+  undefined4 local_1b0;
+  undefined4 local_1ac;
+  longlong local_1a8;
+  longlong local_1a0;
+  ulonglong local_198;
+  ulonglong local_190;
+  longlong local_188;
+  longlong local_180;
+  ulonglong local_178;
+  longlong local_170;
+  longlong local_168;
+  longlong local_160;
+  longlong local_158;
+  longlong local_150;
+  longlong local_148;
+  ulonglong local_140;
+  ulonglong local_138;
+  ulonglong local_130;
+  ulonglong local_128;
+  undefined8 *local_120;
+  undefined8 local_118;
+  ulonglong local_110;
+  ulonglong local_108;
+  undefined8 local_100;
+  ulonglong uStack_f8;
+  undefined8 local_f0;
+  undefined8 local_e8;
+  undefined8 uStack_e0;
+  undefined8 local_d8;
+  ulonglong local_d0;
+  undefined8 local_c8;
+  undefined1 local_b8 [32];
+  longlong local_98;
+  longlong local_88;
+  ulonglong local_70;
+  char local_60;
+  
+  FUN_1400108d0(local_b8);
+  local_188 = ((ulonglong)~(uint)param_2 | 0xfffffffffffff000) + param_2 + 1;
+  uVar5 = (param_2 >> 8) + (~(param_2 >> 8) | 0xf0) + 1;
+  uVar3 = uVar5 ^ 0xaf63bd4c8601b7df;
+  uVar3 = (uVar3 | 0x100000001b3) * (uVar3 & 0x100000001b3) +
+          (uVar3 & 0xfffffefffffffe4c) * ((uVar5 ^ 0x20) & 0x100000001b3);
+  uVar2 = ~(uint)param_2 >> 0x10;
+  uVar3 = ((ulonglong)uVar2 | 0xffffffffffffff00) & uVar3 |
+          (ulonglong)(~(uint)uVar3 & ~(uVar2 | 0xffffff00));
+  uVar3 = (uVar3 | 0x100000001b3) * (uVar3 & 0x100000001b3) +
+          (uVar3 & 0xfffffefffffffe4c) * (~uVar3 & 0x100000001b3);
+  uVar5 = param_2 >> 0x18 & 0xff;
+  uVar3 = ~(ulonglong)((uint)uVar5 & (uint)uVar3) & (uVar5 | uVar3);
+  uVar5 = (uVar3 | 0x100000001b3) * (uVar3 & 0x100000001b3) +
+          (uVar3 & 0xfffffefffffffe4c) * (~uVar3 & 0x100000001b3);
+  uVar2 = (uint)(param_2 >> 0x20);
+  uVar3 = (ulonglong)~uVar2 | 0xffffffffffffff00;
+  uVar3 = ~(uVar5 | uVar3) | uVar3 & uVar5;
+  uVar2 = uVar2 >> 8;
+  uVar6 = ((ulonglong)(uVar2 & 0xa1) | (ulonglong)~uVar2 & 0xb8afa9e5bc3b1c5e | 0xb8afa9e5bc3b1c00)
+          ^ (uVar3 | 0x100000001b3) * (uVar3 & 0x100000001b3) +
+            (~uVar3 & 0x100000001b3) * (uVar3 & 0xfffffefffffffe4c);
+  uVar3 = uVar6 ^ 0xb8afa9e5bc3b1c5e;
+  uVar5 = (ulonglong)~(uint)(ushort)(param_2 >> 0x30) | 0xffffffffffffff00;
+  uVar3 = ~((uVar3 | 0x100000001b3) * (uVar3 & 0x100000001b3) +
+           (uVar3 & 0xfffffefffffffe4c) * ((uVar6 ^ 0x1a1) & 0x100000001b3));
+  uVar3 = uVar3 & uVar5 | ~(uVar3 | uVar5);
+  uVar5 = ~uVar3;
+  lVar4 = (uVar5 | 0x100000001b3) * (uVar5 & 0x100000001b3) +
+          (uVar3 & 0x100000001b3) * (uVar5 & 0xfffffefffffffe4c);
+  uVar2 = (uint)(byte)(param_2 >> 0x38);
+  uVar3 = ((param_2 >> 0x38) - (ulonglong)((~((uint)lVar4 ^ uVar2) & uVar2) * 2)) + lVar4;
+  local_70 = (uVar3 | 0x100000001b3) * (uVar3 & 0x100000001b3) +
+             (~uVar3 & 0x100000001b3) * (uVar3 & 0x7ffffefffffffe4c) & local_70;
+  local_170 = local_88;
+  local_168 = local_70 * 2;
+  lVar4 = *(longlong *)(local_88 + 8 + local_70 * 0x10);
+  local_180 = local_98;
+  local_1bc = 0x6b328b04;
+  local_190 = param_2;
+LAB_14000c08e:
+  do {
+    while (-0x75b66f5 < local_1bc) {
+      if (local_1bc < 0x27a01af3) {
+        if (local_1bc == -0x75b66f4) {
+          local_198 = ((local_190 ^ 0xfffffffffffff000) & local_190) +
+                      *(longlong *)(local_148 + 0x18);
+          local_1bc = 0x133015ec;
+          local_140 = local_198;
+          if (local_198 == 0) {
+            local_1bc = 0x27a01af3;
+          }
+        }
+        else if (local_1bc == 0x133015ec) {
+          uVar3 = ~local_198 | 0xfff;
+          local_130 = local_198 + uVar3 + 1;
+          local_108 = ~uVar3;
+          local_110 = local_198 + uVar3 + (param_4 & 0xffffffff) + 0x1000;
+          local_110 = (local_110 ^ 0xfffffffe00000fff) & local_110;
+          local_120 = &local_100;
+          local_100 = 0;
+          uStack_f8 = 0;
+          local_f0 = 0;
+          local_1b0 = 0;
+          local_128 = param_4 & 0xffffffff;
+          iVar1 = (*(code *)0x4afbc)(*param_1,0x80102040,&local_110,0x28,&local_110,0x28,&local_1b0,
+                                     0);
+          local_1bc = -0x48f1ec35;
+          if (iVar1 == 0) {
+            local_1bc = -0x7a300544;
+          }
+        }
+        else if (local_1bc == 0x25f8a810) {
+          FUN_140011170(local_b8);
+          local_1bc = -0x333d7eb4;
+        }
+      }
+      else if (local_1bc < 0x3558ea14) {
+        if (local_1bc == 0x27a01af3) {
+          local_198 = FUN_1400127e0(param_1,local_190);
+          local_1bc = 0x133015ec;
+          if (local_198 == 0) {
+            local_1bc = 0x319cccee;
+          }
+          local_1ca = 0;
+          local_138 = local_198;
+        }
+        else if (local_1bc == 0x319cccee) {
+          local_1c9 = local_1ca;
+          local_1bc = -0x333d7eb4;
+          if (local_60 != '\0') {
+            local_1bc = 0x25f8a810;
+          }
+        }
+      }
+      else if (local_1bc == 0x3558ea14) {
+        local_160 = *(longlong *)(local_170 + local_168 * 8);
+        local_1bc = -0x4f577489;
+        local_1a8 = lVar4;
+        local_1a0 = lVar4;
+        if (*(longlong *)(lVar4 + 0x10) == local_188) {
+          local_1bc = -0x77e5de58;
+        }
+      }
+      else if (local_1bc == 0x6b328b04) {
+        bVar7 = lVar4 == local_180;
+        local_1bc = 0x3558ea14;
+LAB_14000c083:
+        if (bVar7) {
+          local_1bc = 0x27a01af3;
+        }
+      }
+    }
+    if (-0x4f57748a < local_1bc) {
+      if (local_1bc < -0x333d7eb4) {
+        if (local_1bc == -0x4f577489) {
+          local_158 = local_1a8;
+          bVar7 = local_1a8 == local_160;
+          local_1bc = -0x3214309f;
+          goto LAB_14000c083;
+        }
+        if (local_1bc == -0x48f1ec35) {
+          local_118 = *local_120;
+          local_178 = (local_130 ^ uStack_f8) + (local_130 & uStack_f8) * 2;
+          local_1bc = -0x63c353de;
+          if (local_178 == 0) {
+            local_1bc = 0x319cccee;
+          }
+          local_1ca = 0;
+        }
+      }
+      else if (local_1bc == -0x3214309f) {
+        local_150 = *(longlong *)(local_158 + 8);
+        local_1bc = -0x4f577489;
+        local_1a8 = local_150;
+        local_1a0 = local_150;
+        if (*(longlong *)(local_150 + 0x10) == local_188) {
+          local_1bc = -0x77e5de58;
+        }
+      }
+      else if (local_1bc == -0x333d7eb4) {
+        return local_1c9;
+      }
+      goto LAB_14000c08e;
+    }
+    if (local_1bc == -0x7a300544) {
+      local_1bc = 0x319cccee;
+      local_1ca = 0;
+    }
+    else {
+      if (local_1bc == -0x77e5de58) {
+        local_148 = local_1a0;
+        bVar7 = local_1a0 == local_180;
+        local_1bc = -0x75b66f4;
+        goto LAB_14000c083;
+      }
+      if (local_1bc == -0x63c353de) {
+        FUN_14002de00(param_3,local_178,local_128);
+        local_d0 = (local_178 ^ 0xfff) & local_178;
+        local_e8 = 0;
+        uStack_e0 = 0;
+        local_d8 = local_118;
+        local_c8 = 0;
+        local_1ac = 0;
+        (*(code *)0x4afbc)(*param_1,0x80102044,&local_e8,0x28,0,0,&local_1ac,0);
+        local_1bc = 0x319cccee;
+        local_1ca = 1;
+      }
+    }
+  } while( true );
+}
+
+
+## CALLEES
+[
+    {
+        "address":  "0x1400108d0",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  true,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x140010a04",
+                                        "start":  "0x1400108d0"
+                                    },
+                                    {
+                                        "end":  "0x140010aae",
+                                        "start":  "0x140010a10"
+                                    },
+                                    {
+                                        "end":  "0x140010bd0",
+                                        "start":  "0x140010ab0"
+                                    },
+                                    {
+                                        "end":  "0x140010cb7",
+                                        "start":  "0x140010be0"
+                                    }
+                                ],
+                     "span_bytes":  1000,
+                     "total_bytes":  973
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_1400108d0"
+    },
+    {
+        "address":  "0x140011170",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  false,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x140011295",
+                                        "start":  "0x140011170"
+                                    }
+                                ],
+                     "span_bytes":  294,
+                     "total_bytes":  294
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_140011170"
+    },
+    {
+        "address":  "0x1400127e0",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  true,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x140012a54",
+                                        "start":  "0x1400127e0"
+                                    },
+                                    {
+                                        "end":  "0x140012b3e",
+                                        "start":  "0x140012a60"
+                                    },
+                                    {
+                                        "end":  "0x140012bc6",
+                                        "start":  "0x140012b40"
+                                    },
+                                    {
+                                        "end":  "0x140013100",
+                                        "start":  "0x140012bd0"
+                                    }
+                                ],
+                     "span_bytes":  2337,
+                     "total_bytes":  2316
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_1400127e0"
+    },
+    {
+        "address":  "0x14002de00",
+        "body":  {
+                     "available":  true,
+                     "contains_entry":  true,
+                     "non_contiguous":  true,
+                     "provenance":  "ghidra-function-body-address-set",
+                     "ranges":  [
+                                    {
+                                        "end":  "0x14002de2e",
+                                        "start":  "0x14002de00"
+                                    },
+                                    {
+                                        "end":  "0x14002de6e",
+                                        "start":  "0x14002de30"
+                                    },
+                                    {
+                                        "end":  "0x14002deae",
+                                        "start":  "0x14002de70"
+                                    },
+                                    {
+                                        "end":  "0x14002df1e",
+                                        "start":  "0x14002deb0"
+                                    },
+                                    {
+                                        "end":  "0x14002e074",
+                                        "start":  "0x14002df20"
+                                    },
+                                    {
+                                        "end":  "0x14002e230",
+                                        "start":  "0x14002e100"
+                                    },
+                                    {
+                                        "end":  "0x14002e318",
+                                        "start":  "0x14002e240"
+                                    },
+                                    {
+                                        "end":  "0x14002e3d0",
+                                        "start":  "0x14002e390"
+                                    },
+                                    {
+                                        "end":  "0x14002e46c",
+                                        "start":  "0x14002e3e0"
+                                    }
+                                ],
+                     "span_bytes":  1645,
+                     "total_bytes":  1353
+                 },
+        "classification":  {
+                               "external":  false,
+                               "provenance":  "ghidra-function-manager",
+                               "thunk":  false,
+                               "thunk_target":  null
+                           },
+        "name":  "FUN_14002de00"
+    }
+]
+## CALLERS
+{
+    "address":  "0x14000b120",
+    "body":  {
+                 "available":  true,
+                 "contains_entry":  true,
+                 "non_contiguous":  true,
+                 "provenance":  "ghidra-function-body-address-set",
+                 "ranges":  [
+                                {
+                                    "end":  "0x14000b2e2",
+                                    "start":  "0x14000b120"
+                                },
+                                {
+                                    "end":  "0x14000b3ca",
+                                    "start":  "0x14000b2f0"
+                                },
+                                {
+                                    "end":  "0x14000bd9c",
+                                    "start":  "0x14000b3cc"
+                                }
+                            ],
+                 "span_bytes":  3197,
+                 "total_bytes":  3183
+             },
+    "classification":  {
+                           "external":  false,
+                           "provenance":  "ghidra-function-manager",
+                           "thunk":  false,
+                           "thunk_target":  null
+                       },
+    "name":  "FUN_14000b120"
+}
+## NAMES
+[
+    {
+        "address":  "0x14000c069",
+        "source_address":  "0x14000c107",
+        "value":  "LAB_14000c069"
+    },
+    {
+        "address":  "0x14000c083",
+        "source_address":  "0x14000c2b6",
+        "value":  "LAB_14000c083"
+    },
+    {
+        "address":  "0x14000c083",
+        "source_address":  "0x14000c3c7",
+        "value":  "LAB_14000c083"
+    },
+    {
+        "address":  "0x14000c087",
+        "source_address":  "0x14000c0df",
+        "value":  "LAB_14000c087"
+    },
+    {
+        "address":  "0x14000c087",
+        "source_address":  "0x14000c4e6",
+        "value":  "LAB_14000c087"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c067",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c0bf",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c112",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c166",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c18b",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c23e",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c26b",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c289",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c29e",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c313",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c357",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c3a8",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c415",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c08e",
+        "source_address":  "0x14000c4f0",
+        "value":  "LAB_14000c08e"
+    },
+    {
+        "address":  "0x14000c0f0",
+        "source_address":  "0x14000c097",
+        "value":  "LAB_14000c0f0"
+    },
+    {
+        "address":  "0x14000c170",
+        "source_address":  "0x14000c0f5",
+        "value":  "LAB_14000c170"
+    },
+    {
+        "address":  "0x14000c250",
+        "source_address":  "0x14000c09e",
+        "value":  "LAB_14000c250"
+    },
+    {
+        "address":  "0x14000c28e",
+        "source_address":  "0x14000c0a9",
+        "value":  "LAB_14000c28e"
+    },
+    {
+        "address":  "0x14000c2bb",
+        "source_address":  "0x14000c0fc",
+        "value":  "LAB_14000c2bb"
+    },
+    {
+        "address":  "0x14000c303",
+        "source_address":  "0x14000c175",
+        "value":  "LAB_14000c303"
+    },
+    {
+        "address":  "0x14000c318",
+        "source_address":  "0x14000c0b4",
+        "value":  "LAB_14000c318"
+    },
+    {
+        "address":  "0x14000c35c",
+        "source_address":  "0x14000c293",
+        "value":  "LAB_14000c35c"
+    },
+    {
+        "address":  "0x14000c39e",
+        "source_address":  "0x14000c2fe",
+        "value":  "LAB_14000c39e"
+    },
+    {
+        "address":  "0x14000c3ad",
+        "source_address":  "0x14000c180",
+        "value":  "LAB_14000c3ad"
+    },
+    {
+        "address":  "0x14000c3cc",
+        "source_address":  "0x14000c255",
+        "value":  "LAB_14000c3cc"
+    },
+    {
+        "address":  "0x14000c41a",
+        "source_address":  "0x14000c260",
+        "value":  "LAB_14000c41a"
+    },
+    {
+        "address":  "0x14000c4eb",
+        "source_address":  "0x14000c2c0",
+        "value":  "LAB_14000c4eb"
+    },
+    {
+        "address":  "0x1400108d0",
+        "source_address":  "0x14000bdcf",
+        "value":  "FUN_1400108d0"
+    },
+    {
+        "address":  "0x140011170",
+        "source_address":  "0x14000c279",
+        "value":  "FUN_140011170"
+    },
+    {
+        "address":  "0x1400127e0",
+        "source_address":  "0x14000c323",
+        "value":  "FUN_1400127e0"
+    },
+    {
+        "address":  "0x14002de00",
+        "source_address":  "0x14000c1a4",
+        "value":  "FUN_14002de00"
+    },
+    {
+        "address":  "0x14004ab08",
+        "source_address":  "0x14000c04a",
+        "value":  "DAT_14004ab08"
+    }
+]
+## STRINGS
+
+## UNRESOLVED
+[
+    {
+        "address":  "0x14000c22c",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    },
+    {
+        "address":  "0x14000c4d5",
+        "reason":  "Instruction decoder identifies a call but ReferenceManager supplies no call destination"
+    }
+]
+## NATIVE_API
+{
+    "available":  true,
+    "calling_convention":  "__fastcall",
+    "decompiler_artifacts":  [
+                                 "recovered-signature",
+                                 "register-and-stack-variables",
+                                 "compiler-generated-control-flow",
+                                 "pointer-arithmetic",
+                                 "pseudocode"
+                             ],
+    "jump_tables":  [
+
+                    ],
+    "limitations":  [
+                        "Types and calling conventions are Ghidra decompiler observations, not source declarations.",
+                        "Register variables, compiler-generated blocks, and pointer arithmetic remain decompiler artifacts.",
+                        "Pseudocode is neither original source nor guaranteed to compile."
+                    ],
+    "parameters":  [
+                       {
+                           "confidence":  "low",
+                           "data_type":  "undefined8 *",
+                           "decompiler_artifacts":  [
+                                                        "recovered-signature",
+                                                        "register-or-stack-storage",
+                                                        "compiler-generated-variable"
+                                                    ],
+                           "evidence":  [
+                                            {
+                                                "detail":  "Function signature source is default.",
+                                                "kind":  "signature-source",
+                                                "source":  "ghidra-function-manager"
+                                            },
+                                            {
+                                                "detail":  "HighFunction recovered data type undefined8 *.",
+                                                "kind":  "decompiler-type",
+                                                "source":  "ghidra-high-function"
+                                            }
+                                        ],
+                           "name":  "param_1",
+                           "ordinal":  0,
+                           "role":  "parameter",
+                           "size_bytes":  8,
+                           "storage":  "RCX:8"
+                       },
+                       {
+                           "confidence":  "low",
+                           "data_type":  "ulonglong",
+                           "decompiler_artifacts":  [
+                                                        "recovered-signature",
+                                                        "register-or-stack-storage",
+                                                        "compiler-generated-variable"
+                                                    ],
+                           "evidence":  [
+                                            {
+                                                "detail":  "Function signature source is default.",
+                                                "kind":  "signature-source",
+                                                "source":  "ghidra-function-manager"
+                                            },
+                                            {
+                                                "detail":  "HighFunction recovered data type ulonglong.",
+                                                "kind":  "decompiler-type",
+                                                "source":  "ghidra-high-function"
+                                            }
+                                        ],
+                           "name":  "param_2",
+                           "ordinal":  1,
+                           "role":  "parameter",
+                           "size_bytes":  8,
+                           "storage":  "RDX:8"
+                       },
+                       {
+                           "confidence":  "low",
+                           "data_type":  "undefined8",
+                           "decompiler_artifacts":  [
+                                                        "recovered-signature",
+                                                        "register-or-stack-storage",
+                                                        "compiler-generated-variable"
+                                                    ],
+                           "evidence":  [
+                                            {
+                                                "detail":  "Function signature source is default.",
+                                                "kind":  "signature-source",
+                                                "source":  "ghidra-function-manager"
+                                            },
+                                            {
+                                                "detail":  "HighFunction recovered data type undefined8.",
+                                                "kind":  "decompiler-type",
+                                                "source":  "ghidra-high-function"
+                                            }
+                                        ],
+                           "name":  "param_3",
+                           "ordinal":  2,
+                           "role":  "parameter",
+                           "size_bytes":  8,
+                           "storage":  "R8:8"
+                       },
+                       {
+                           "confidence":  "low",
+                           "data_type":  "ulonglong",
+                           "decompiler_artifacts":  [
+                                                        "recovered-signature",
+                                                        "register-or-stack-storage",
+                                                        "compiler-generated-variable"
+                                                    ],
+                           "evidence":  [
+                                            {
+                                                "detail":  "Function signature source is default.",
+                                                "kind":  "signature-source",
+                                                "source":  "ghidra-function-manager"
+                                            },
+                                            {
+                                                "detail":  "HighFunction recovered data type ulonglong.",
+                                                "kind":  "decompiler-type",
+                                                "source":  "ghidra-high-function"
+                                            }
+                                        ],
+                           "name":  "param_4",
+                           "ordinal":  3,
+                           "role":  "parameter",
+                           "size_bytes":  8,
+                           "storage":  "R9:8"
+                       }
+                   ],
+    "provenance":  "ghidra-high-function",
+    "pseudocode":  {
+                       "classification":  "decompiler-generated-non-source",
+                       "compilable":  false
+                   },
+    "return_type":  {
+                        "confidence":  "low",
+                        "data_type":  "undefined1",
+                        "decompiler_artifacts":  [
+                                                     "recovered-signature",
+                                                     "register-or-stack-storage"
+                                                 ],
+                        "evidence":  [
+                                         {
+                                             "detail":  "Function signature source is default.",
+                                             "kind":  "signature-source",
+                                             "source":  "ghidra-function-manager"
+                                         },
+                                         {
+                                             "detail":  "HighFunction recovered data type undefined1.",
+                                             "kind":  "decompiler-type",
+                                             "source":  "ghidra-high-function"
+                                         }
+                                     ],
+                        "name":  null,
+                        "ordinal":  null,
+                        "role":  "return",
+                        "size_bytes":  1,
+                        "storage":  "AL:1"
+                    },
+    "signature_source":  "default"
+}
+

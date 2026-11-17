@@ -1,0 +1,34 @@
+{
+  "evidence_id": "ev_f2c1830976783982b162bcf00805ad71b71a2c6e90d9868fd0c18ded30f1d407",
+  "operation": "procedure_assembly",
+  "parameters": {
+    "procedure": "0x140022a3c"
+  },
+  "subject": {
+    "name": "FgGear32404.exe",
+    "digest": {
+      "sha256": "55f6e9997a8ee49ebcbad534b01c581f2b0af90c59ba4ca626d71da283cb59ec"
+    },
+    "local_path": "E:\\CodexData\\exports\\FGTRACK-外层助手-20261113-01\\FgGear32404.exe",
+    "format": "pe",
+    "architecture": "x86_64"
+  },
+  "normalized_result": "0x140022a3c: MOV qword ptr [RSP + 0x8], RBX\n0x140022a41: MOV qword ptr [RSP + 0x10], RDI\n0x140022a46: PUSH RBP\n0x140022a47: LEA RBP, [RSP + -0x57]\n0x140022a4c: SUB RSP, 0x100\n0x140022a53: MOV RAX, qword ptr [0x1400c82c0]\n0x140022a5a: XOR RAX, RSP\n0x140022a5d: MOV qword ptr [RBP + 0x47], RAX\n0x140022a61: MOV EDX, 0x2\n0x140022a66: XOR ECX, ECX\n0x140022a68: CALL qword ptr [0x140052820]\n0x140022a6e: TEST EAX, EAX\n0x140022a70: JNS 0x140022a91\n0x140022a72: MOV EDI, 0x1\n0x140022a77: MOV EAX, EDI\n0x140022a79: XCHG dword ptr [0x1400d9a10], EAX\n0x140022a7f: MOV RCX, qword ptr [0x1400d99e0]\n0x140022a86: CALL qword ptr [0x140052250]\n0x140022a8c: JMP 0x140022c6e\n0x140022a91: XOR EDX, EDX\n0x140022a93: LEA RCX, [RBP + -0x49]\n0x140022a97: LEA R8D, [RDX + 0x48]\n0x140022a9b: CALL 0x140050400\n0x140022aa0: LEA RAX, [0x1400217f8]\n0x140022aa7: XOR ECX, ECX\n0x140022aa9: MOV qword ptr [RBP + -0x41], RAX\n0x140022aad: CALL qword ptr [0x140052550]\n0x140022ab3: MOV RCX, RAX\n0x140022ab6: MOV qword ptr [RBP + -0x31], RAX\n0x140022aba: MOV EDX, 0x65\n0x140022abf: CALL qword ptr [0x1400526b0]\n0x140022ac5: MOV EDX, 0x7f00\n0x140022aca: XOR ECX, ECX\n0x140022acc: MOV qword ptr [RBP + -0x29], RAX\n0x140022ad0: CALL qword ptr [0x1400526d0]\n0x140022ad6: MOV qword ptr [RBP + -0x21], RAX\n0x140022ada: LEA RCX, [RBP + -0x49]\n0x140022ade: LEA RAX, [0x1400aef50]\n0x140022ae5: MOV qword ptr [RBP + -0x9], RAX\n0x140022ae9: CALL qword ptr [0x140052650]\n0x140022aef: MOV EDI, 0x1\n0x140022af4: MOV ECX, EDI\n0x140022af6: CALL qword ptr [0x140052698]\n0x140022afc: SUB EAX, 0x2a8\n0x140022b01: XOR ECX, ECX\n0x140022b03: CDQ\n0x140022b04: SUB EAX, EDX\n0x140022b06: SAR EAX, 0x1\n0x140022b08: MOV EBX, EAX\n0x140022b0a: CALL qword ptr [0x140052698]\n0x140022b10: MOV RCX, qword ptr [RBP + -0x31]\n0x140022b14: MOV R8D, 0x276\n0x140022b1a: MOV qword ptr [RSP + 0x58], 0x0\n0x140022b23: SUB EAX, R8D\n0x140022b26: MOV qword ptr [RSP + 0x50], RCX\n0x140022b2b: CDQ\n0x140022b2c: MOV qword ptr [RSP + 0x48], 0x0\n0x140022b35: SUB EAX, EDX\n0x140022b37: MOV RDX, qword ptr [RBP + -0x9]\n0x140022b3b: MOV R9D, 0x80000000\n0x140022b41: MOV qword ptr [RSP + 0x40], 0x0\n0x140022b4a: MOV ECX, 0x40000\n0x140022b4f: MOV dword ptr [RSP + 0x38], 0x2a8\n0x140022b57: MOV dword ptr [RSP + 0x30], R8D\n0x140022b5c: LEA R8, [0x1400aef70]\n0x140022b63: SAR EAX, 0x1\n0x140022b65: MOV dword ptr [RSP + 0x28], EBX\n0x140022b69: MOV dword ptr [RSP + 0x20], EAX\n0x140022b6d: CALL qword ptr [0x140052680]\n0x140022b73: MOV qword ptr [0x1400d99d0], RAX\n0x140022b7a: TEST RAX, RAX\n0x140022b7d: JNZ 0x140022b99\n0x140022b7f: MOV EAX, EDI\n0x140022b81: XCHG dword ptr [0x1400d9a10], EAX\n0x140022b87: MOV RCX, qword ptr [0x1400d99e0]\n0x140022b8e: CALL qword ptr [0x140052250]\n0x140022b94: JMP 0x140022c68\n0x140022b99: MOVDQA XMM0, xmmword ptr [0x140085220]\n0x140022ba1: LEA RDX, [RBP + 0x37]\n0x140022ba5: MOV RCX, RAX\n0x140022ba8: MOVUPS xmmword ptr [RBP + 0x37], XMM0\n0x140022bac: CALL qword ptr [0x1400527f8]\n0x140022bb2: MOV RCX, qword ptr [0x1400d99d0]\n0x140022bb9: MOV EDX, 0x5\n0x140022bbe: CALL qword ptr [0x1400525f0]\n0x140022bc4: MOV RCX, qword ptr [0x1400d99d0]\n0x140022bcb: CALL qword ptr [0x140052610]\n0x140022bd1: CALL 0x1400226cc\n0x140022bd6: JMP 0x140022bec\n0x140022bd8: LEA RCX, [RBP + 0x7]\n0x140022bdc: CALL qword ptr [0x1400525d8]\n0x140022be2: LEA RCX, [RBP + 0x7]\n0x140022be6: CALL qword ptr [0x140052638]\n0x140022bec: XOR R9D, R9D\n0x140022bef: LEA RCX, [RBP + 0x7]\n0x140022bf3: XOR R8D, R8D\n0x140022bf6: XOR EDX, EDX\n0x140022bf8: CALL qword ptr [0x140052630]\n0x140022bfe: TEST EAX, EAX\n0x140022c00: JG 0x140022bd8\n0x140022c02: MOV RCX, qword ptr [0x1400d9a00]\n0x140022c09: TEST RCX, RCX\n0x140022c0c: JZ 0x140022c1e\n0x140022c0e: MOV RAX, qword ptr [RCX]\n0x140022c11: CALL qword ptr [RAX + 0xc0]\n0x140022c17: MOV RCX, qword ptr [0x1400d9a00]\n0x140022c1e: MOV RDX, qword ptr [0x1400d99f8]\n0x140022c25: TEST RDX, RDX\n0x140022c28: JZ 0x140022c45\n0x140022c2a: MOV RAX, qword ptr [RDX]\n0x140022c2d: MOV RCX, RDX\n0x140022c30: CALL qword ptr [RAX + 0x10]\n0x140022c33: MOV RCX, qword ptr [0x1400d9a00]\n0x140022c3a: MOV qword ptr [0x1400d99f8], 0x0\n0x140022c45: TEST RCX, RCX\n0x140022c48: JZ 0x140022c5b\n0x140022c4a: MOV RAX, qword ptr [RCX]\n0x140022c4d: CALL qword ptr [RAX + 0x10]\n0x140022c50: MOV qword ptr [0x1400d9a00], 0x0\n0x140022c5b: MOV qword ptr [0x1400d99d0], 0x0\n0x140022c66: XOR EDI, EDI\n0x140022c68: CALL qword ptr [0x140052808]\n0x140022c6e: MOV EAX, EDI\n0x140022c70: MOV RCX, qword ptr [RBP + 0x47]\n0x140022c74: XOR RCX, RSP\n0x140022c77: CALL 0x140024930\n0x140022c7c: LEA R11, [RSP + 0x100]\n0x140022c84: MOV RBX, qword ptr [R11 + 0x10]\n0x140022c88: MOV RDI, qword ptr [R11 + 0x18]\n0x140022c8c: MOV RSP, R11\n0x140022c8f: POP RBP\n0x140022c90: RET",
+  "limitations": [
+    "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+    "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+    "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+    "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+    "Assembly is Ghidra Listing text and does not claim textual equivalence with Hopper output.",
+    "Windows Ghidra P0 accepts native x86, x86-64, ARMNT (Thumb-2) and ARM64 PE applications and DLLs, and explicitly selected raw 6502 images; managed, hostile, sensitive, and mutable-path targets are unsupported.",
+    "The Windows bridge uses authenticated IPv4 loopback because Node path-based IPC does not expose Java AF_UNIX sockets; the endpoint file contains no bearer token.",
+    "Windows sessions require the matching packaged Windows x64 native addon, local NTFS targets and runtimes, and Windows 10 or later. Native handles enforce path admission, private DACLs, and Job Object ownership automatically."
+  ],
+  "authority": "shipped-artifact",
+  "confidence": "observed",
+  "provider": {
+    "id": "ghidra",
+    "name": "Ghidra",
+    "version": "12.1.4"
+  }
+}

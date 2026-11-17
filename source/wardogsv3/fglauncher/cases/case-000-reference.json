@@ -1,0 +1,72 @@
+{
+  "schema": "wardog-case/1",
+  "id": "case-000-reference",
+  "name": "FGTRACK 参照物：指定进程 FGTRACK.exe + 指定地址（只读校验）",
+  "source": {
+    "export_root": "E:\\CodexData\\exports\\FGTRACK-完整资料-20261026-01",
+    "note": "进程名、镜像、地址与字节全部取自该导出包。地址基址统一为分析载体基址 0x140000000（见 01_调查原始归档/SECURITY-REPORT.txt 第 178 行）；逐条地址的出处写在各 observation 的 note 里。"
+  },
+  "target": {
+    "process_name": "FGTRACK.exe",
+    "image": {
+      "path": "02_软件原样本\\内层加载器\\FGTRACK.exe.bin",
+      "sha256": "96925a1079065eb689015a4cc47f047865450f5fc413628f051bdb5d0464f43a",
+      "base": "0x140000000",
+      "timestamp": "0x6AC90E62",
+      "size_of_image": "0x9D8000"
+    }
+  },
+  "observations": [
+    {
+      "name": "image_header",
+      "scope": "process",
+      "va": "0x140000000",
+      "length": 64,
+      "expect": "4d5a7800010000000400000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000078000000",
+      "note": "PE 头。映像按首选基址 0x140000000 加载，不需要重定位，因此这一页必须与磁盘字节完全一致；`va` 同时是 DiscoverForImage() 判定目标地址空间的依据（MZ + PE + TimeDateStamp + SizeOfImage）。"
+    },
+    {
+      "name": "entry_point",
+      "scope": "process",
+      "va": "0x14064C058",
+      "length": 32,
+      "expect": "e88201000041524989e24152498b7210498b7a20fcb2808a0648ffc6880748ff",
+      "note": "原始入口 0x14064C058（SECURITY-REPORT.txt 第 155 行：原始入口 0x14064C058）。位于 .boot 段，文件有实体数据，可用于逐字节证明读取确实落在该进程自己的页表上。"
+    },
+    {
+      "name": "trampoline_slot",
+      "scope": "process",
+      "va": "0x14004AE48",
+      "length": 8,
+      "note": "保护器内部跳板槽（SECURITY-REPORT.txt 第 260 行：RBX=0x14004AE48，写后值为内部跳板 0x1401E81D0）。位于 .themida 段，运行时才由保护器解包/写入，静态映像为 0，因此只报告读数与物理地址，不做字节比对。"
+    },
+    {
+      "name": "encoded_unit",
+      "scope": "process",
+      "va": "0x140075F68",
+      "length": 8,
+      "note": "编码值单元（SECURITY-REPORT.txt 第 258 行：向 0x140075F68 写入 0xA12D5B71147FD9DA）。运行时值，只读报告。"
+    },
+    {
+      "name": "protector_descriptor",
+      "scope": "process",
+      "va": "0x14008D40E",
+      "length": 4,
+      "note": "保护描述项（SECURITY-REPORT.txt 第 254 行：读取 0x14008D40E，值 0xA12D5B70）。运行时值，只读报告。"
+    },
+    {
+      "name": "veh_write_byte",
+      "scope": "process",
+      "va": "0x14033E5DD",
+      "length": 1,
+      "note": "VEH 回调唯一的样本写入点（SECURITY-REPORT.txt 第 240 行：MOV byte ptr [RDI+0x2CE5DD],0，RDI=0x140070000）。运行时值，只读报告。"
+    }
+  ],
+  "gate": {
+    "module": "ntoskrnl.exe",
+    "routine": "PsSetLoadImageNotifyRoutine",
+    "routine_rva": "0x787850",
+    "flag_rva": "0xFD9A88",
+    "patch": "4831c0c3"
+  }
+}

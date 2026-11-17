@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-23",
+  "source_base": "f68c5a8f8d54a5f97b57ee890bd5b013cc45d481",
+  "scope": "controlled child memory to original projection/drawing and real GPU",
+  "source_file_sha256": {
+    "tests/build_controlled_render.py": "B1221C0EEFBF2FF8E39C77FEDBA0AFE8FBE9E0FD320B1B62D2276D00559A9E34",
+    "tests/controlled_render.c": "B138EC1F7BFF61F88CEEED04F4AD42ECABF3853FC6A464924E89DCF0DDC3506A",
+    "2_src_cheat/gpu.cpp": "B4D865686F3BC59DD34D983A34C2D1B9534EFB8804260E44F0B7CD763DF021F7",
+    "2_src_cheat/wd_esp_full.c": "96A06B8EE3186043BE4C13535D887E6FEE5F021F01C3C7B0E6166AC3900EF2E5",
+    "tests/controlled_gpu_probe.cpp": "44BF8073B481E2B50162E8D2B3237D9B496E64DB210775744A3AAAB1534E5059"
+  },
+  "executable_sha256": "C1EF0E3693FF932E9F84AC6B7A4B06A0D949A9343033093A4E6BC0C9332781AC",
+  "transparent_test": "PASS 6 scenarios, 14 reads, 34952 bytes",
+  "diagnostic_test": "PASS 6 scenarios, supplemental only",
+  "visible_borderless_topmost_styles_verified": true,
+  "backbuffer_alpha_verified": true,
+  "desktop_transparency_visually_verified": false,
+  "click_through_verified": false,
+  "real_kernel_ioctls_verified": false,
+  "real_game_verified": false,
+  "synthetic_inputs": [
+    "entities",
+    "bones",
+    "camera",
+    "pawn data"
+  ],
+  "external_artifacts": "E:\\CodexData\\.codex\\tmp\\wardogs-controlled-render-20261023",
+  "notes": [
+    "Original production sources unchanged",
+    "Default --preview and --self-test are transparent overlays",
+    "GPU captures precede Present; not desktop screenshots",
+    "No repeat window launch after user instruction"
+  ]
+}

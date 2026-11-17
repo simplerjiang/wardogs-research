@@ -1,0 +1,47 @@
+{
+  "source": "E:\\CodexData\\exports\\FGTRACK-外层助手-20261113-01\\FgGear32404.exe",
+  "output": "E:\\CodexData\\exports\\Kong助手-20261114-01\\Kong助手.exe",
+  "bytes": 6595608,
+  "source_sha256": "55f6e9997a8ee49ebcbad534b01c581f2b0af90c59ba4ca626d71da283cb59ec",
+  "output_sha256": "2518c8dfb16d2dd7f9ff27ae3a373de5a2304dd6a4abbc48b409065bc85c55e2",
+  "html_slots": [
+    {
+      "name": "menu",
+      "bytes": 172599,
+      "capacity": 172990,
+      "sha256": "a98afd023d574c94a33183fed48233a8abe53974aea21a1ab5a9c9125e7004e9"
+    },
+    {
+      "name": "launcher",
+      "bytes": 100832,
+      "capacity": 167146,
+      "sha256": "73c6ecb54ca9581c8782aec92784e788f4d92b192bf34ef7b1bc6cdc48dd6708"
+    }
+  ],
+  "native_display_text_slots": [
+    {
+      "file_offset": "0x51ef0",
+      "capacity": 122,
+      "text": "%s"
+    },
+    {
+      "file_offset": "0x535e0",
+      "capacity": 134,
+      "text": "启动失败。"
+    }
+  ],
+  "unexpected_changed_bytes": [],
+  "changed_bytes": 254246,
+  "generated_at_utc": "2026-11-13T16:10:25.928302+00:00",
+  "native_launcher_ui_verified": true,
+  "menu_browser_interactions_verified": true,
+  "native_menu_capture_verified": false,
+  "full_game_startup_retested": false,
+  "launch_copy_checks": {
+    "loading_key_hidden": true,
+    "diagnostic_request_hidden": true,
+    "timeline_absent_even_when_expanded": true,
+    "update_notes_hidden": true,
+    "error_reason_preserved": true
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "menu",
+    "file_offset": 358144,
+    "byte_length": 172990,
+    "encoding": "utf-8",
+    "va": "0x140058900",
+    "sha256": "f4e19cd3ef0957e1f3dfcbb5ed98c12cb46819ff51e4f16126d1e72e752ec0cc",
+    "html_ends": true
+  },
+  {
+    "name": "launcher",
+    "file_offset": 540720,
+    "byte_length": 167146,
+    "encoding": "utf-16le",
+    "va": "0x140085230",
+    "sha256": "c0116fe6fff87cd33e9327eeeb8aad76df23ead72f0aed92fa72a8d2b2aa556a",
+    "html_ends": true
+  }
+]

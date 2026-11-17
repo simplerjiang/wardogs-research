@@ -1,0 +1,21 @@
+{
+  "profile": "wardog-esp",
+  "image": "WardogsClient-Win64-Shipping.exe",
+  "state": "uncalibrated",
+  "world_slot": "0x0",
+  "owning_game_instance": "0x0",
+  "local_players": "0x0",
+  "local_player_controller": "0x0",
+  "player_camera_manager": "0x0",
+  "camera_cache": "0x0",
+  "pov_location": "0x10",
+  "pov_rotation": "0x1C",
+  "pov_fov": "0x28",
+  "persistent_level": "0x0",
+  "world_levels": "0x0",
+  "level_actors": "0x0",
+  "actor_root_component": "0x0",
+  "component_location": "0x0",
+  "character_height_cm": 180,
+  "vehicle_height_cm": 300
+}

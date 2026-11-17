@@ -1,0 +1,35 @@
+:root{--red:#94b8df;--red2:#b1cbe8;--dim:#67839f;--text:#e5edf5;--muted:#a1afbe;--line:#344657}
+html,body{background:transparent!important;font-family:"Segoe UI Variable Text","Microsoft YaHei UI",sans-serif}
+.panel{inset:0;border:1px solid var(--line);border-radius:8px;background:#141b24;box-shadow:none;animation:none}
+.panel:before,.scan,#lightning,.hero{display:none}
+header{height:52px;min-height:52px;display:flex;padding:0 18px;gap:10px;border-bottom:1px solid var(--line)}
+header .fg-logo{width:24px;height:24px;fill:currentColor;stroke:none;color:var(--red);filter:none}
+.brand{font-size:17px;font-weight:650;letter-spacing:0}
+header .lang,.close{height:30px;border:0;border-radius:5px;background:transparent;color:var(--muted);font-size:12px;letter-spacing:0}
+header .lang:hover,.close:hover{background:#263545;color:var(--text)}
+header .close{width:28px;font-size:20px}
+header #close{margin-left:auto}
+#notesOpen,#updateNotes{display:none!important}
+main{padding:18px 20px 14px;display:flex;flex-direction:column;gap:12px;scrollbar-color:#4a5b6e transparent}
+.status{margin:0;padding:0;border:0;border-radius:0;background:transparent}
+.status-head{gap:9px}.status-head strong{font-size:15px;font-weight:550;letter-spacing:0;color:var(--text)}
+.status-head small{color:var(--muted);font-size:12px;letter-spacing:0}
+.dot{width:7px;height:7px;background:var(--red);box-shadow:none;animation:none}
+#detail{margin:10px 0 0;min-height:42px;font-size:13px;line-height:1.65;color:var(--muted)}
+.profile-actions{display:none}
+.show-details .profile-actions{display:flex}
+.kong-details{align-self:flex-start;min-height:32px;padding:0 12px;border:1px solid #506c87;border-radius:5px;background:#26394d;color:#d4e4f6;font-size:12px}
+.kong-details:hover{background:#334d67}
+.profile-actions{gap:8px;margin:0}.profile-actions button{border:1px solid var(--line);border-radius:5px;background:transparent;color:var(--muted);font-size:12px}
+.actions{margin:0}.actions button{background:#26394d;border:1px solid #506c87;color:var(--text);border-radius:5px}
+#actions:not([hidden]){display:flex!important}
+footer{flex:none;margin:0;padding:12px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:0;gap:10px}
+.kong-contact{color:#c6d3e1;white-space:nowrap;user-select:text}
+.confirm-dialog,.guide-dialog{border:1px solid var(--line);border-radius:8px;background:#1b2633;box-shadow:none;color:var(--text)}
+.confirm-dialog p,.update-dialog .update-hint,.update-version{color:var(--muted)}
+.confirm-actions button,.security-actions button{border:1px solid var(--line);border-radius:5px;background:#26394d;color:var(--text)}
+.confirm-actions .confirm,.security-actions .confirm{border-color:#94b8df;background:#94b8df;color:#122030}
+.update-dialog .release-notes{border-color:var(--line);background:#141b24;border-radius:5px}
+.failed #detail{color:#f0b7b7}
+button:focus-visible,input:focus-visible{outline:2px solid #94b8df;outline-offset:2px}
+@media(max-width:540px){header{height:52px;min-height:52px;display:flex;padding:0 14px;gap:8px}header .brand{font-size:17px;letter-spacing:0}header #close{margin-left:auto}main{padding:16px 18px 14px}.panel{inset:0}footer{margin:0;padding:12px 18px}}

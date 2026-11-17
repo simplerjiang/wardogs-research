@@ -1,0 +1,38 @@
+[
+  {
+    "name": "wardogs-sources-20261117.zip",
+    "bytes": 4072686,
+    "sha256": "f38c152d8376d346def09a28781999523db47a6361de7566b4b776a9422e5c78",
+    "files": 278
+  },
+  {
+    "name": "fgtrack-complete-20261026.zip",
+    "bytes": 828010411,
+    "sha256": "dd045dd8c5ad011eb47aa76ab35c73d79ba59c67739ac9f973cac76a01c60cbc",
+    "files": 9735
+  },
+  {
+    "name": "fgtrack-outer-20261113.zip",
+    "bytes": 5849349,
+    "sha256": "484389e47db85904cb2c38eb8bc1167f7ad992cbd1adcdcf7b45bafd3ec69ad5",
+    "files": 4
+  },
+  {
+    "name": "kong-assistant-20261113.zip",
+    "bytes": 8715044,
+    "sha256": "bdc0c18d415891095ef4c9d768adcf6c6efc9257615dad17270c9e04e7396d06",
+    "files": 9
+  },
+  {
+    "name": "kong-assistant-20261114.zip",
+    "bytes": 14576551,
+    "sha256": "67c8e6a44ee4a41879b29785b7e55645b180ba515696cd13bfd9aeaf8bd3eda2",
+    "files": 14
+  },
+  {
+    "name": "fgtrack-attribution-20261026.zip",
+    "bytes": 135576839,
+    "sha256": "5ae3392c8de3405766d8df0cc49e4b8b828dbb2612b5084d794e266f954b9814",
+    "files": 450
+  }
+]

@@ -1,0 +1,139 @@
+﻿### PROCEDURE 0x14000e0b0
+## PSEUDOCODE
+
+void FUN_14000e0b0(void)
+
+{
+  undefined1 auStack_8c8 [60];
+  undefined4 local_88c;
+  ulonglong local_48;
+  
+  local_48 = DAT_140062d80 ^ (ulonglong)auStack_8c8;
+  local_88c = 0;
+  FUN_14060d0ab();
+  return;
+}
+
+
+## CALLEES
+{
+    "address":  "0x14060d0ab",
+    "body":  {
+                 "available":  true,
+                 "contains_entry":  true,
+                 "non_contiguous":  false,
+                 "provenance":  "ghidra-function-body-address-set",
+                 "ranges":  [
+                                {
+                                    "end":  "0x14060d1d7",
+                                    "start":  "0x14060d0ab"
+                                }
+                            ],
+                 "span_bytes":  301,
+                 "total_bytes":  301
+             },
+    "classification":  {
+                           "external":  false,
+                           "provenance":  "ghidra-function-manager",
+                           "thunk":  false,
+                           "thunk_target":  null
+                       },
+    "name":  "FUN_14060d0ab"
+}
+## CALLERS
+{
+    "address":  "0x14000e600",
+    "body":  {
+                 "available":  true,
+                 "contains_entry":  true,
+                 "non_contiguous":  false,
+                 "provenance":  "ghidra-function-body-address-set",
+                 "ranges":  [
+                                {
+                                    "end":  "0x14000e6ed",
+                                    "start":  "0x14000e600"
+                                }
+                            ],
+                 "span_bytes":  238,
+                 "total_bytes":  238
+             },
+    "classification":  {
+                           "external":  false,
+                           "provenance":  "ghidra-function-manager",
+                           "thunk":  false,
+                           "thunk_target":  null
+                       },
+    "name":  "FUN_14000e600"
+}
+## NAMES
+[
+    {
+        "address":  "0x140062d80",
+        "source_address":  "0x14000e0c3",
+        "value":  "DAT_140062d80"
+    },
+    {
+        "address":  "0x14060d0ab",
+        "source_address":  "0x14000e0dd",
+        "value":  "FUN_14060d0ab"
+    }
+]
+## STRINGS
+
+## UNRESOLVED
+
+## NATIVE_API
+{
+    "available":  true,
+    "calling_convention":  "__fastcall",
+    "decompiler_artifacts":  [
+                                 "recovered-signature",
+                                 "register-and-stack-variables",
+                                 "compiler-generated-control-flow",
+                                 "pointer-arithmetic",
+                                 "pseudocode"
+                             ],
+    "jump_tables":  [
+
+                    ],
+    "limitations":  [
+                        "Types and calling conventions are Ghidra decompiler observations, not source declarations.",
+                        "Register variables, compiler-generated blocks, and pointer arithmetic remain decompiler artifacts.",
+                        "Pseudocode is neither original source nor guaranteed to compile."
+                    ],
+    "parameters":  [
+
+                   ],
+    "provenance":  "ghidra-high-function",
+    "pseudocode":  {
+                       "classification":  "decompiler-generated-non-source",
+                       "compilable":  false
+                   },
+    "return_type":  {
+                        "confidence":  "low",
+                        "data_type":  "void",
+                        "decompiler_artifacts":  [
+                                                     "recovered-signature",
+                                                     "register-or-stack-storage"
+                                                 ],
+                        "evidence":  [
+                                         {
+                                             "detail":  "Function signature source is default.",
+                                             "kind":  "signature-source",
+                                             "source":  "ghidra-function-manager"
+                                         },
+                                         {
+                                             "detail":  "HighFunction recovered data type void.",
+                                             "kind":  "decompiler-type",
+                                             "source":  "ghidra-high-function"
+                                         }
+                                     ],
+                        "name":  null,
+                        "ordinal":  null,
+                        "role":  "return",
+                        "size_bytes":  0,
+                        "storage":  "\u003cVOID\u003e"
+                    },
+    "signature_source":  "default"
+}
+

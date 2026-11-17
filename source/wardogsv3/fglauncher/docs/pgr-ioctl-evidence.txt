@@ -1,0 +1,278 @@
+﻿PGRHostControl.original.sys -- IOCTL contract evidence (dumpbin /disasm)
+SHA256: 076cfa7d866dc0364894fc5b9b671e5109935f564b01fe15ba35c46f3ef720a4
+ImageBase 0x140000000, entry 0x140005000, 34024 bytes.
+
+== dispatch 0x140016D8 : CurrentStackLocation -> IoControlCode compare ==
+  00000001400016D8: 48 89 5C 24 08     mov         qword ptr [rsp+8],rbx
+  00000001400016DD: 48 89 74 24 18     mov         qword ptr [rsp+18h],rsi
+  00000001400016E2: 55                 push        rbp
+  00000001400016E3: 57                 push        rdi
+  00000001400016E4: 41 56              push        r14
+  00000001400016E6: 48 8B EC           mov         rbp,rsp
+  00000001400016E9: 48 83 EC 70        sub         rsp,70h
+  00000001400016ED: 48 8B 05 0C 19 00  mov         rax,qword ptr [0000000140003000h]
+                    00
+  00000001400016F4: 48 33 C4           xor         rax,rsp
+  00000001400016F7: 48 89 45 F8        mov         qword ptr [rbp-8],rax
+  00000001400016FB: 48 8B 8A B8 00 00  mov         rcx,qword ptr [rdx+00000000000000B8h]
+                    00
+  0000000140001702: 83 62 30 00        and         dword ptr [rdx+30h],0
+  0000000140001706: 48 83 62 38 00     and         qword ptr [rdx+38h],0
+  000000014000170B: 80 39 0E           cmp         byte ptr [rcx],0Eh
+  000000014000170E: 48 8B 5A 18        mov         rbx,qword ptr [rdx+18h]
+  0000000140001712: 8B 41 10           mov         eax,dword ptr [rcx+10h]
+  0000000140001715: 48 8B FA           mov         rdi,rdx
+  0000000140001718: 8B 51 08           mov         edx,dword ptr [rcx+8]
+  000000014000171B: 0F 85 C8 01 00 00  jne         00000001400018E9
+  0000000140001721: 8B 49 18           mov         ecx,dword ptr [rcx+18h]
+  0000000140001724: 81 F9 8C 21 22 00  cmp         ecx,22218Ch
+  000000014000172A: 0F 84 59 01 00 00  je          0000000140001889
+  0000000140001730: 81 F9 40 20 10 80  cmp         ecx,80102040h
+  0000000140001736: 0F 84 F5 00 00 00  je          0000000140001831
+  000000014000173C: 81 F9 44 20 10 80  cmp         ecx,80102044h
+  0000000140001742: 0F 84 B9 00 00 00  je          0000000140001801
+  0000000140001748: 81 F9 50 20 10 80  cmp         ecx,80102050h
+  000000014000174E: 74 5B              je          00000001400017AB
+  0000000140001750: 81 F9 54 20 10 80  cmp         ecx,80102054h
+  0000000140001756: 0F 85 86 01 00 00  jne         00000001400018E2
+  000000014000175C: 85 C0              test        eax,eax
+  000000014000175E: 0F 84 7E 01 00 00  je          00000001400018E2
+  0000000140001764: 48 8D 4D C0        lea         rcx,[rbp-40h]
+  0000000140001768: 44 8B C0           mov         r8d,eax
+  000000014000176B: 48 8B D3           mov         rdx,rbx
+  000000014000176E: E8 2D F9 FF FF     call        00000001400010A0
+  0000000140001773: 0F B6 4D C6        movzx       ecx,byte ptr [rbp-3Ah]
+  0000000140001777: FF C9              dec         ecx
+  0000000140001779: 74 26              je          00000001400017A1
+  000000014000177B: FF C9              dec         ecx
+  000000014000177D: 74 13              je          0000000140001792
+
+== map path 0x14001831 : q1 = phys, q0 = size; out q2/q3/q4 = handle/base/object ==
+  0000000140001831: 85 C0              test        eax,eax
+  0000000140001833: 0F 84 A9 00 00 00  je          00000001400018E2
+  0000000140001839: 48 8D 4D D0        lea         rcx,[rbp-30h]
+  000000014000183D: 4C 8B C0           mov         r8,rax
+  0000000140001840: 48 8B D3           mov         rdx,rbx
+  0000000140001843: 48 8B F0           mov         rsi,rax
+  0000000140001846: E8 55 F8 FF FF     call        00000001400010A0
+  000000014000184B: 48 8B 55 D0        mov         rdx,qword ptr [rbp-30h]
+  000000014000184F: 48 8B 4D D8        mov         rcx,qword ptr [rbp-28h]
+  0000000140001853: 48 8D 45 F0        lea         rax,[rbp-10h]
+  0000000140001857: 4C 8D 4D E0        lea         r9,[rbp-20h]
+  000000014000185B: 4C 8D 45 E8        lea         r8,[rbp-18h]
+  000000014000185F: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+  0000000140001864: E8 37 FC FF FF     call        00000001400014A0
+  0000000140001869: 44 8B F0           mov         r14d,eax
+  000000014000186C: 85 C0              test        eax,eax
+  000000014000186E: 78 13              js          0000000140001883
+  0000000140001870: 48 8D 55 D0        lea         rdx,[rbp-30h]
+  0000000140001874: 4C 8B C6           mov         r8,rsi
+  0000000140001877: 48 8B CB           mov         rcx,rbx
+  000000014000187A: E8 21 F8 FF FF     call        00000001400010A0
+  000000014000187F: 48 89 77 38        mov         qword ptr [rdi+38h],rsi
+  0000000140001883: 44 89 77 30        mov         dword ptr [rdi+30h],r14d
+  0000000140001887: EB 60              jmp         00000001400018E9
+  0000000140001889: B9 0C 00 00 00     mov         ecx,0Ch
+  000000014000188E: 3B C1              cmp         eax,ecx
+  0000000140001890: 72 50              jb          00000001400018E2
+  0000000140001892: F2 0F 10 03        movsd       xmm0,mmword ptr [rbx]
+  0000000140001896: 8B 43 08           mov         eax,dword ptr [rbx+8]
+  0000000140001899: 44 8D 41 F5        lea         r8d,[rcx-0Bh]
+  000000014000189D: F2 0F 11 45 C0     movsd       mmword ptr [rbp-40h],xmm0
+  00000001400018A2: 89 45 C8           mov         dword ptr [rbp-38h],eax
+  00000001400018A5: 44 39 45 C0        cmp         dword ptr [rbp-40h],r8d
+
+== unmap path 0x14001801 : (q2,q3,q4) -> ZwUnmapViewOfSection(ProcessHandle=-1), ObfDereferenceObject, ZwClose ==
+  0000000140001801: 85 C0              test        eax,eax
+  0000000140001803: 0F 84 D9 00 00 00  je          00000001400018E2
+  0000000140001809: 48 8D 4D D0        lea         rcx,[rbp-30h]
+  000000014000180D: 4C 8B C0           mov         r8,rax
+  0000000140001810: 48 8B D3           mov         rdx,rbx
+  0000000140001813: E8 88 F8 FF FF     call        00000001400010A0
+  0000000140001818: 4C 8B 45 F0        mov         r8,qword ptr [rbp-10h]
+  000000014000181C: 48 8B 55 E8        mov         rdx,qword ptr [rbp-18h]
+  0000000140001820: 48 8B 4D E0        mov         rcx,qword ptr [rbp-20h]
+  0000000140001824: E8 63 FE FF FF     call        000000014000168C
+  0000000140001829: 89 47 30           mov         dword ptr [rdi+30h],eax
+  000000014000182C: E9 B8 00 00 00     jmp         00000001400018E9
+  0000000140001831: 85 C0              test        eax,eax
+  0000000140001833: 0F 84 A9 00 00 00  je          00000001400018E2
+  0000000140001839: 48 8D 4D D0        lea         rcx,[rbp-30h]
+  000000014000183D: 4C 8B C0           mov         r8,rax
+  0000000140001840: 48 8B D3           mov         rdx,rbx
+  0000000140001843: 48 8B F0           mov         rsi,rax
+  0000000140001846: E8 55 F8 FF FF     call        00000001400010A0
+  000000014000184B: 48 8B 55 D0        mov         rdx,qword ptr [rbp-30h]
+  000000014000184F: 48 8B 4D D8        mov         rcx,qword ptr [rbp-28h]
+
+== handshake 0x14001889 : in[0]==1, in[1]>=0xC, out = {1,0xC} ==
+  0000000140001889: B9 0C 00 00 00     mov         ecx,0Ch
+  000000014000188E: 3B C1              cmp         eax,ecx
+  0000000140001890: 72 50              jb          00000001400018E2
+  0000000140001892: F2 0F 10 03        movsd       xmm0,mmword ptr [rbx]
+  0000000140001896: 8B 43 08           mov         eax,dword ptr [rbx+8]
+  0000000140001899: 44 8D 41 F5        lea         r8d,[rcx-0Bh]
+  000000014000189D: F2 0F 11 45 C0     movsd       mmword ptr [rbp-40h],xmm0
+  00000001400018A2: 89 45 C8           mov         dword ptr [rbp-38h],eax
+  00000001400018A5: 44 39 45 C0        cmp         dword ptr [rbp-40h],r8d
+  00000001400018A9: 75 37              jne         00000001400018E2
+  00000001400018AB: 48 8B 45 C0        mov         rax,qword ptr [rbp-40h]
+  00000001400018AF: 48 C1 E8 20        shr         rax,20h
+  00000001400018B3: 3B C1              cmp         eax,ecx
+  00000001400018B5: 72 2B              jb          00000001400018E2
+  00000001400018B7: 3B D1              cmp         edx,ecx
+  00000001400018B9: 73 09              jae         00000001400018C4
+  00000001400018BB: C7 47 30 23 00 00  mov         dword ptr [rdi+30h],0C0000023h
+                    C0
+  00000001400018C2: EB 25              jmp         00000001400018E9
+  00000001400018C4: 44 89 45 C0        mov         dword ptr [rbp-40h],r8d
+  00000001400018C8: 89 4D C4           mov         dword ptr [rbp-3Ch],ecx
+  00000001400018CB: F2 0F 10 45 C0     movsd       xmm0,mmword ptr [rbp-40h]
+  00000001400018D0: F2 0F 11 03        movsd       mmword ptr [rbx],xmm0
+  00000001400018D4: 44 89 43 08        mov         dword ptr [rbx+8],r8d
+  00000001400018D8: 83 67 30 00        and         dword ptr [rdi+30h],0
+
+== map implementation 0x140014A0 : ZwOpenSection(\Device\PhysicalMemory) -> ObReferenceObjectByHandle
+   -> HalTranslateBusAddress -> ZwMapViewOfSection(Protect=0x204, ViewShare) ==
+  00000001400014A0: 48 89 5C 24 08     mov         qword ptr [rsp+8],rbx
+  00000001400014A5: 48 89 54 24 10     mov         qword ptr [rsp+10h],rdx
+  00000001400014AA: 55                 push        rbp
+  00000001400014AB: 56                 push        rsi
+  00000001400014AC: 57                 push        rdi
+  00000001400014AD: 41 56              push        r14
+  00000001400014AF: 41 57              push        r15
+  00000001400014B1: 48 8D 6C 24 D1     lea         rbp,[rsp-2Fh]
+  00000001400014B6: 48 81 EC B0 00 00  sub         rsp,0B0h
+                    00
+  00000001400014BD: 48 83 65 E7 00     and         qword ptr [rbp-19h],0
+  00000001400014C2: 4C 8B F9           mov         r15,rcx
+  00000001400014C5: 48 8D 15 64 05 00  lea         rdx,[0000000140001A30h]
+                    00
+  00000001400014CC: 48 8D 4D EF        lea         rcx,[rbp-11h]
+  00000001400014D0: 49 8B F1           mov         rsi,r9
+  00000001400014D3: 4D 8B F0           mov         r14,r8
+  00000001400014D6: FF 15 9C 0B 00 00  call        qword ptr [0000000140002078h]
+  00000001400014DC: 48 83 26 00        and         qword ptr [rsi],0
+  00000001400014E0: 48 8B 5D 7F        mov         rbx,qword ptr [rbp+7Fh]
+  00000001400014E4: 0F 57 C0           xorps       xmm0,xmm0
+  00000001400014E7: F3 0F 7F 45 1F     movdqu      xmmword ptr [rbp+1Fh],xmm0
+  00000001400014EC: 48 83 23 00        and         qword ptr [rbx],0
+  00000001400014F0: 48 83 65 07 00     and         qword ptr [rbp+7],0
+  00000001400014F5: 48 8D 45 EF        lea         rax,[rbp-11h]
+  00000001400014F9: 4C 8D 45 FF        lea         r8,[rbp-1]
+  00000001400014FD: BA 1F 00 0F 00     mov         edx,0F001Fh
+  0000000140001502: 48 8B CE           mov         rcx,rsi
+  0000000140001505: C7 45 FF 30 00 00  mov         dword ptr [rbp-1],30h
+                    00
+  000000014000150C: C7 45 17 40 00 00  mov         dword ptr [rbp+17h],40h
+                    00
+  0000000140001513: 48 89 45 0F        mov         qword ptr [rbp+0Fh],rax
+  0000000140001517: FF 15 33 0B 00 00  call        qword ptr [0000000140002050h]
+  000000014000151D: 8B F8              mov         edi,eax
+  000000014000151F: 85 C0              test        eax,eax
+  0000000140001521: 0F 88 49 01 00 00  js          0000000140001670
+  0000000140001527: 48 8B 0E           mov         rcx,qword ptr [rsi]
+  000000014000152A: 48 83 64 24 28 00  and         qword ptr [rsp+28h],0
+  0000000140001530: 45 33 C9           xor         r9d,r9d
+  0000000140001533: 45 33 C0           xor         r8d,r8d
+  0000000140001536: BA 1F 00 0F 00     mov         edx,0F001Fh
+  000000014000153B: 48 89 5C 24 20     mov         qword ptr [rsp+20h],rbx
+  0000000140001540: FF 15 F2 0A 00 00  call        qword ptr [0000000140002038h]
+  0000000140001546: 8B F8              mov         edi,eax
+  0000000140001548: 85 C0              test        eax,eax
+  000000014000154A: 0F 88 17 01 00 00  js          0000000140001667
+  0000000140001550: 48 8B 4D 67        mov         rcx,qword ptr [rbp+67h]
+  0000000140001554: 83 65 77 00        and         dword ptr [rbp+77h],0
+  0000000140001558: 33 D2              xor         edx,edx
+  000000014000155A: 49 03 CF           add         rcx,r15
+  000000014000155D: 4C 89 7D D7        mov         qword ptr [rbp-29h],r15
+  0000000140001561: 4D 8B C7           mov         r8,r15
+  0000000140001564: 44 8D 7A 01        lea         r15d,[rdx+1]
+  0000000140001568: 48 8D 45 D7        lea         rax,[rbp-29h]
+  000000014000156C: 48 89 4D CF        mov         qword ptr [rbp-31h],rcx
+  0000000140001570: 4C 8D 4D 77        lea         r9,[rbp+77h]
+  0000000140001574: 41 8B CF           mov         ecx,r15d
+  0000000140001577: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+  000000014000157C: FF 15 86 0A 00 00  call        qword ptr [0000000140002008h]
+  0000000140001582: 4C 8B 45 CF        mov         r8,qword ptr [rbp-31h]
+  0000000140001586: 83 65 77 00        and         dword ptr [rbp+77h],0
+  000000014000158A: 8A D8              mov         bl,al
+  000000014000158C: 48 8D 45 CF        lea         rax,[rbp-31h]
+  0000000140001590: 4C 8D 4D 77        lea         r9,[rbp+77h]
+  0000000140001594: 33 D2              xor         edx,edx
+  0000000140001596: 41 8B CF           mov         ecx,r15d
+  0000000140001599: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+  000000014000159E: FF 15 64 0A 00 00  call        qword ptr [0000000140002008h]
+  00000001400015A4: 84 DB              test        bl,bl
+  00000001400015A6: 0F 84 C4 00 00 00  je          0000000140001670
+  00000001400015AC: 84 C0              test        al,al
+  00000001400015AE: 0F 84 BC 00 00 00  je          0000000140001670
+  00000001400015B4: 48 8B 45 D7        mov         rax,qword ptr [rbp-29h]
+  00000001400015B8: 48 8B 4D CF        mov         rcx,qword ptr [rbp-31h]
+  00000001400015BC: C7 44 24 48 04 02  mov         dword ptr [rsp+48h],204h
+                    00 00
+  00000001400015C4: 83 64 24 40 00     and         dword ptr [rsp+40h],0
+  00000001400015C9: 48 2B C8           sub         rcx,rax
+  00000001400015CC: 48 89 45 DF        mov         qword ptr [rbp-21h],rax
+  00000001400015D0: 44 89 7C 24 38     mov         dword ptr [rsp+38h],r15d
+  00000001400015D5: 48 8D 45 67        lea         rax,[rbp+67h]
+  00000001400015D9: 48 89 4D 67        mov         qword ptr [rbp+67h],rcx
+  00000001400015DD: 48 89 44 24 30     mov         qword ptr [rsp+30h],rax
+  00000001400015E2: 48 8D 45 DF        lea         rax,[rbp-21h]
+  00000001400015E6: 48 83 CB FF        or          rbx,0FFFFFFFFFFFFFFFFh
+  00000001400015EA: 48 89 44 24 28     mov         qword ptr [rsp+28h],rax
+  00000001400015EF: 48 89 4C 24 20     mov         qword ptr [rsp+20h],rcx
+  00000001400015F4: 48 8B 0E           mov         rcx,qword ptr [rsi]
+  00000001400015F7: 4C 8D 45 E7        lea         r8,[rbp-19h]
+  00000001400015FB: 45 33 C9           xor         r9d,r9d
+  00000001400015FE: 48 8B D3           mov         rdx,rbx
+  0000000140001601: FF 15 51 0A 00 00  call        qword ptr [0000000140002058h]
+  0000000140001607: 8B F8              mov         edi,eax
+  0000000140001609: 3D 18 00 00 C0     cmp         eax,0C0000018h
+  000000014000160E: 75 42              jne         0000000140001652
+  0000000140001610: 48 8B 0E           mov         rcx,qword ptr [rsi]
+
+== IAT layout (dumpbin /imports) ==
+Dump of file E:\CodexData\exports\FGTRACK-完整资料-20261026-01\02_软件原样本\驱动及对照\PGRHostControl.original.sys
+
+File Type: EXECUTABLE IMAGE
+
+  Section contains the following imports:
+
+    ntoskrnl.exe
+             140002018 Import Address Table
+             1400050E0 Import Name Table
+                     0 time date stamp
+                     0 Index of first forwarder reference
+
+                         1CE IoCreateDevice
+                         1D8 IoCreateSymbolicLink
+                         1E3 IoDeleteDevice
+                         1E5 IoDeleteSymbolicLink
+                         47C ObReferenceObjectByHandle
+                         2A3 IofCompleteRequest
+                         712 ZwClose
+                         756 ZwOpenSection
+                         744 ZwMapViewOfSection
+                         7B8 ZwUnmapViewOfSection
+                         2C8 KeBugCheckEx
+                         488 ObfDereferenceObject
+                         5BA RtlInitUnicodeString
+
+    HAL.dll
+             140002008 Import Address Table
+             1400050D0 Import Name Table
+                     0 time date stamp
+                     0 Index of first forwarder reference
+
+                          46 HalTranslateBusAddress
+
+  Summary
+
+        1000 .data
+        1000 .pdata
+        1000 .rdata
+        1000 .reloc
+        1000 .rsrc
+        1000 .text
+        1000 INIT
